@@ -54,6 +54,12 @@ python3 demo/run_demo.py        # then open http://127.0.0.1:8443
 It needs Python 3.9 or newer and nothing else. The library's alerts in the sample are real engine output:
 each one was produced by replaying a regression case through the Wazuh analysis engine.
 
+> **The demo is a preview.** It runs the real console against a local stand-in with sample data, so you can
+> look around without a lab. MOE itself runs on a live Wazuh deployment (tested on 4.12.0): the rules install on
+> the manager and the console reads its real alerts. All 25 use cases were fired live on the example lab, with a
+> Windows 10 workstation and an Ubuntu web server as Wazuh agents, following the
+> [live-test runbook](docs/live-test-runbook.md).
+
 | | |
 |---|---|
 | ![Overview page](docs/images/console-overview.png) | ![ATT&CK coverage page](docs/images/console-attack.png) |
