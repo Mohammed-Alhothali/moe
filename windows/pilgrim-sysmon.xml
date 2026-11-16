@@ -1,0 +1,111 @@
+<!--
+  Pilgrim detection lab - Sysmon configuration (Sysmon 13 or later)
+  Tuned to the library's Windows use cases: log what the rules need, drop what only adds noise.
+
+    Event 1  ProcessCreate  all              UC10 UC11 UC12 UC14 UC19 UC21 UC22 UC25
+    Event 3  NetworkConnect script hosts / LOLBins only                UC11 UC12
+    Event 10 ProcessAccess  access to lsass.exe only                    UC20
+    Event 11 FileCreate     downloads, Outlook cache, HTA/script drops  UC10
+    Event 12-14 Registry    autorun keys, Defender policy keys          UC13 UC19
+    Event 17-18 PipeEvent   remote-execution service pipes              UC22
+    Event 22 DnsQuery       all except very noisy Microsoft domains     UC24
+
+  Apply (as Administrator):  Sysmon64.exe -c pilgrim-sysmon.xml   (setup-windows.ps1 does it for you)
+-->
+<Sysmon schemaversion="4.50">
+  <HashAlgorithms>sha256</HashAlgorithms>
+  <CheckRevocation/>
+  <EventFiltering>
+
+    <RuleGroup name="" groupRelation="or">
+      <ProcessCreate onmatch="exclude"/>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <NetworkConnect onmatch="include">
+        <Image condition="end with">\powershell.exe</Image>
+        <Image condition="end with">\pwsh.exe</Image>
+        <Image condition="end with">\mshta.exe</Image>
+        <Image condition="end with">\certutil.exe</Image>
+        <Image condition="end with">\bitsadmin.exe</Image>
+        <Image condition="end with">\regsvr32.exe</Image>
+        <Image condition="end with">\rundll32.exe</Image>
+        <Image condition="end with">\wscript.exe</Image>
+        <Image condition="end with">\cscript.exe</Image>
+      </NetworkConnect>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <ProcessTerminate onmatch="include"/>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <ImageLoad onmatch="include"/>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <FileCreateTime onmatch="include"/>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <TargetImage condition="end with">\lsass.exe</TargetImage>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <FileCreate onmatch="include">
+        <TargetFilename condition="contains">\Downloads\</TargetFilename>
+        <TargetFilename condition="contains">\Content.Outlook\</TargetFilename>
+        <TargetFilename condition="end with">.hta</TargetFilename>
+        <TargetFilename condition="end with">.js</TargetFilename>
+        <TargetFilename condition="end with">.vbs</TargetFilename>
+        <!-- UC23: anything written to another drive (USB sticks, external disks) -->
+        <TargetFilename condition="not begin with">C:\</TargetFilename>
+      </FileCreate>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <RegistryEvent onmatch="include">
+        <TargetObject condition="contains">\CurrentVersion\Run</TargetObject>
+        <TargetObject condition="contains">\Policies\Explorer\Run</TargetObject>
+        <TargetObject condition="contains">\Winlogon\Userinit</TargetObject>
+        <TargetObject condition="contains">\Winlogon\Shell</TargetObject>
+        <TargetObject condition="contains">\Policies\Microsoft\Windows Defender</TargetObject>
+        <TargetObject condition="contains">\Windows Defender\Real-Time Protection</TargetObject>
+      </RegistryEvent>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <FileCreateStreamHash onmatch="include"/>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <PipeEvent onmatch="include">
+        <PipeName condition="begin with">\PSEXESVC</PipeName>
+        <PipeName condition="contains">\RemCom</PipeName>
+        <PipeName condition="contains">\paexec</PipeName>
+        <PipeName condition="contains">\csexec</PipeName>
+        <PipeName condition="contains">\winexesvc</PipeName>
+      </PipeEvent>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <DnsQuery onmatch="exclude">
+        <QueryName condition="end with">.microsoft.com</QueryName>
+        <QueryName condition="end with">.windowsupdate.com</QueryName>
+        <QueryName condition="end with">.msftncsi.com</QueryName>
+        <QueryName condition="end with">.windows.com</QueryName>
+      </DnsQuery>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <FileDelete onmatch="include"/>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <ClipboardChange onmatch="include"/>
+    </RuleGroup>
+
+  </EventFiltering>
+</Sysmon>

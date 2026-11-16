@@ -1,0 +1,251 @@
+{
+ "use_case": "UC10",
+ "cases": [
+  {
+   "id": "UC10-01",
+   "title": "mshta opens an HTA from Downloads -> 111001",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\mshta.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "MSHTA.EXE",
+      "CommandLine": "\"C:\\Windows\\System32\\mshta.exe\" \"C:\\Users\\ahmed\\Downloads\\Hajj_visa_update.hta\"",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111001
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC10-02",
+   "title": "wscript runs a .js extracted from a zipped invoice in Temp -> 111002",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\wscript.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "wscript.exe",
+      "CommandLine": "\"C:\\Windows\\System32\\WScript.exe\" \"C:\\Users\\ahmed\\AppData\\Local\\Temp\\Temp1_invoice.zip\\Nusuk_invoice.js\"",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111002
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC10-03",
+   "title": "Word starts PowerShell -> 111003",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "PowerShell.EXE",
+      "CommandLine": "powershell.exe -nop -c whoami",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+      "ParentCommandLine": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111003
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC10-04",
+   "title": "IT logon script from the netlogon share (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\wscript.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "wscript.exe",
+      "CommandLine": "\"C:\\Windows\\System32\\WScript.exe\" \\\\fileserver\\netlogon\\map_drives.vbs",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    111001,
+    111002,
+    111003
+   ]
+  },
+  {
+   "id": "UC10-05",
+   "title": "Vendor help file opened with mshta from Program Files (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\mshta.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "MSHTA.EXE",
+      "CommandLine": "\"C:\\Windows\\System32\\mshta.exe\" \"C:\\Program Files\\Vendor\\help\\index.hta\"",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    111001
+   ]
+  }
+ ]
+}

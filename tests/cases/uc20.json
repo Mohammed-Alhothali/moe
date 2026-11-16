@@ -1,0 +1,441 @@
+{
+ "use_case": "UC20",
+ "cases": [
+  {
+   "id": "UC20-01",
+   "title": "Unknown tool opens LSASS with 0x1010 (Wazuh 92900 path) -> 112001",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 10
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "SourceProcessGUID": "{11111111-2222-3333-4444-555555555556}",
+      "SourceProcessId": "5120",
+      "SourceThreadId": "5124",
+      "SourceImage": "C:\\Users\\Public\\tool.exe",
+      "TargetProcessGUID": "{11111111-2222-3333-4444-555555555557}",
+      "TargetProcessId": "712",
+      "TargetImage": "C:\\Windows\\system32\\lsass.exe",
+      "GrantedAccess": "0x1010",
+      "CallTrace": "C:\\Windows\\SYSTEM32\\ntdll.dll+9d4c4|C:\\Windows\\System32\\KERNELBASE.dll+2c13e",
+      "SourceUser": "WIN10-LAB\\ahmed",
+      "TargetUser": "NT AUTHORITY\\SYSTEM"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112001
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC20-02",
+   "title": "Full access 0x1fffff that Wazuh 92900 does not list -> 112001",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 10
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "SourceProcessGUID": "{11111111-2222-3333-4444-555555555556}",
+      "SourceProcessId": "5120",
+      "SourceThreadId": "5124",
+      "SourceImage": "C:\\Users\\ahmed\\AppData\\Local\\Temp\\x.exe",
+      "TargetProcessGUID": "{11111111-2222-3333-4444-555555555557}",
+      "TargetProcessId": "712",
+      "TargetImage": "C:\\Windows\\system32\\lsass.exe",
+      "GrantedAccess": "0x1fffff",
+      "CallTrace": "C:\\Windows\\SYSTEM32\\ntdll.dll+9d4c4|C:\\Windows\\System32\\KERNELBASE.dll+2c13e",
+      "SourceUser": "WIN10-LAB\\ahmed",
+      "TargetUser": "NT AUTHORITY\\SYSTEM"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112001
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC20-03",
+   "title": "Task Manager dump: MiniDumpWriteDump in the call stack -> 112002",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 10
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "SourceProcessGUID": "{11111111-2222-3333-4444-555555555556}",
+      "SourceProcessId": "5120",
+      "SourceThreadId": "5124",
+      "SourceImage": "C:\\Windows\\System32\\Taskmgr.exe",
+      "TargetProcessGUID": "{11111111-2222-3333-4444-555555555557}",
+      "TargetProcessId": "712",
+      "TargetImage": "C:\\Windows\\system32\\lsass.exe",
+      "GrantedAccess": "0x1fffff",
+      "CallTrace": "C:\\Windows\\SYSTEM32\\ntdll.dll+9d4c4|C:\\Windows\\System32\\KERNELBASE.dll+2c13e|C:\\Windows\\SYSTEM32\\dbgcore.DLL+6dfb|C:\\Windows\\SYSTEM32\\dbgcore.DLL+3bf2",
+      "SourceUser": "WIN10-LAB\\ahmed",
+      "TargetUser": "NT AUTHORITY\\SYSTEM"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112002
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC20-04",
+   "title": "rundll32 comsvcs.dll MiniDump -> 112003",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\rundll32.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "RUNDLL32.EXE",
+      "CommandLine": "rundll32.exe C:\\Windows\\System32\\comsvcs.dll, MiniDump 712 C:\\Users\\Public\\l.dmp full",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112003
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC20-05",
+   "title": "reg save of the SAM hive (Wazuh 92026 path) -> 112004",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\reg.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "reg.exe",
+      "CommandLine": "reg save HKLM\\SAM C:\\Users\\Public\\sam.save",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112004
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC20-06",
+   "title": "reg save of the SYSTEM hive (gap in Wazuh 92026) -> 112004",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\reg.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "reg.exe",
+      "CommandLine": "reg save HKLM\\SYSTEM Q:\\sys.save",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112004
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC20-07",
+   "title": "Defender scanning LSASS (allow-listed path, no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 10
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "SourceProcessGUID": "{11111111-2222-3333-4444-555555555556}",
+      "SourceProcessId": "5120",
+      "SourceThreadId": "5124",
+      "SourceImage": "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.24090.11-0\\MsMpEng.exe",
+      "TargetProcessGUID": "{11111111-2222-3333-4444-555555555557}",
+      "TargetProcessId": "712",
+      "TargetImage": "C:\\Windows\\system32\\lsass.exe",
+      "GrantedAccess": "0x1fffff",
+      "CallTrace": "C:\\Windows\\SYSTEM32\\ntdll.dll+9d4c4|C:\\Windows\\System32\\KERNELBASE.dll+2c13e",
+      "SourceUser": "WIN10-LAB\\ahmed",
+      "TargetUser": "NT AUTHORITY\\SYSTEM"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112001,
+    112002
+   ]
+  },
+  {
+   "id": "UC20-10",
+   "title": "Found live: Defender opens LSASS with 0x1010 - Wazuh's 92900 silenced by tuning rule 112009",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 10
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "SourceProcessGUID": "{11111111-2222-3333-4444-555555555556}",
+      "SourceProcessId": "5120",
+      "SourceThreadId": "5124",
+      "SourceImage": "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.26100.4-0\\MsMpEng.exe",
+      "TargetProcessGUID": "{11111111-2222-3333-4444-555555555557}",
+      "TargetProcessId": "712",
+      "TargetImage": "C:\\Windows\\system32\\lsass.exe",
+      "GrantedAccess": "0x1010",
+      "CallTrace": "C:\\Windows\\SYSTEM32\\ntdll.dll+9d4c4|C:\\Windows\\System32\\KERNELBASE.dll+2c13e",
+      "SourceUser": "WIN10-LAB\\ahmed",
+      "TargetUser": "NT AUTHORITY\\SYSTEM"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112009
+    }
+   ],
+   "forbid": [
+    92900,
+    112001
+   ]
+  },
+  {
+   "id": "UC20-08",
+   "title": "Query-only access 0x1000 (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 10
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "SourceProcessGUID": "{11111111-2222-3333-4444-555555555556}",
+      "SourceProcessId": "5120",
+      "SourceThreadId": "5124",
+      "SourceImage": "C:\\Users\\Public\\tool.exe",
+      "TargetProcessGUID": "{11111111-2222-3333-4444-555555555557}",
+      "TargetProcessId": "712",
+      "TargetImage": "C:\\Windows\\system32\\lsass.exe",
+      "GrantedAccess": "0x1000",
+      "CallTrace": "C:\\Windows\\SYSTEM32\\ntdll.dll+9d4c4|C:\\Windows\\System32\\KERNELBASE.dll+2c13e",
+      "SourceUser": "WIN10-LAB\\ahmed",
+      "TargetUser": "NT AUTHORITY\\SYSTEM"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112001,
+    112002
+   ]
+  },
+  {
+   "id": "UC20-09",
+   "title": "Exporting one service key under HKLM\\SYSTEM (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\reg.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "reg.exe",
+      "CommandLine": "reg export HKLM\\SYSTEM\\CurrentControlSet\\Services\\PilgrimSync C:\\backup\\svc.reg",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112004
+   ]
+  }
+ ]
+}

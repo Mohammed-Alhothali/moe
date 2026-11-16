@@ -1,0 +1,291 @@
+{
+ "use_case": "UC05",
+ "cases": [
+  {
+   "id": "UC05-01",
+   "title": "Staff opens 12 different pilgrim records in minutes -> 110501",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1001\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1002\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1003\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1004\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1005\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1006\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1007\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1008\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1009\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1010\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1011\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 12,
+     "rule": 110501
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC05-02",
+   "title": "Same record re-opened 12 times (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.31\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"pilgrim_id\":\"1000\",\"record_agency\":\"AG-IN01\",\"result\":\"allowed\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110501
+   ]
+  },
+  {
+   "id": "UC05-03",
+   "title": "Approved bulk reviewer during a visa peak (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2000\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2001\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2002\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2003\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2004\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2005\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2006\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2007\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2008\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2009\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2010\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2011\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2012\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"192.168.20.32\",\"username\":\"staff.visa01\",\"role\":\"staff\",\"pilgrim_id\":\"2013\",\"record_agency\":\"AG-PK01\",\"result\":\"allowed\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110501
+   ]
+  },
+  {
+   "id": "UC05-04",
+   "title": "Pilgrim walks other pilgrims' record IDs and is denied 5 times -> 110502",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"203.0.113.55\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"pilgrim_id\":\"1043\",\"record_agency\":\"AG-ID01\",\"result\":\"denied\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"203.0.113.55\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"pilgrim_id\":\"1044\",\"record_agency\":\"AG-ID01\",\"result\":\"denied\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"203.0.113.55\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"pilgrim_id\":\"1045\",\"record_agency\":\"AG-ID01\",\"result\":\"denied\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"203.0.113.55\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"pilgrim_id\":\"1046\",\"record_agency\":\"AG-ID01\",\"result\":\"denied\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"record_view\",\"srcip\":\"203.0.113.55\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"pilgrim_id\":\"1047\",\"record_agency\":\"AG-ID01\",\"result\":\"denied\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 5,
+     "rule": 110502
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC05-05",
+   "title": "Tuning: nginx 403 for a refused record is absorbed (no duplicate 31101 alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.55 - - [10/Nov/2026:20:15:03 +0300] \"GET /records/1100 HTTP/1.1\" 403 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110022
+    }
+   ],
+   "forbid": [
+    31101
+   ]
+  }
+ ]
+}

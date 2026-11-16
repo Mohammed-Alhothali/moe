@@ -1,0 +1,289 @@
+{
+ "use_case": "UC01",
+ "cases": [
+  {
+   "id": "UC01-01",
+   "title": "One account fires 10 booking attempts in a minute -> 110101",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.20\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"slot_id\":\"200\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.20\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"slot_id\":\"201\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.20\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"slot_id\":\"202\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.20\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"slot_id\":\"203\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.20\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"slot_id\":\"204\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.20\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"slot_id\":\"205\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.20\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"slot_id\":\"206\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.20\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"slot_id\":\"207\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.20\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"slot_id\":\"208\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.20\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"slot_id\":\"209\",\"result\":\"full\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 10,
+     "rule": 110101
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC01-02",
+   "title": "15 attempts from one IP, rotating accounts -> 110102",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0000\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0001\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0002\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0003\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0004\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0005\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0006\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0007\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0008\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0009\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0010\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0011\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0012\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0013\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.21\",\"username\":\"pilgrim0014\",\"role\":\"pilgrim\",\"slot_id\":\"300\",\"result\":\"booked\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 15,
+     "rule": 110102
+    }
+   ],
+   "forbid": [
+    110101
+   ]
+  },
+  {
+   "id": "UC01-03",
+   "title": "9 attempts stays under the threshold (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.22\",\"username\":\"pilgrim0043\",\"role\":\"pilgrim\",\"slot_id\":\"200\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.22\",\"username\":\"pilgrim0043\",\"role\":\"pilgrim\",\"slot_id\":\"201\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.22\",\"username\":\"pilgrim0043\",\"role\":\"pilgrim\",\"slot_id\":\"202\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.22\",\"username\":\"pilgrim0043\",\"role\":\"pilgrim\",\"slot_id\":\"203\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.22\",\"username\":\"pilgrim0043\",\"role\":\"pilgrim\",\"slot_id\":\"204\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.22\",\"username\":\"pilgrim0043\",\"role\":\"pilgrim\",\"slot_id\":\"205\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.22\",\"username\":\"pilgrim0043\",\"role\":\"pilgrim\",\"slot_id\":\"206\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.22\",\"username\":\"pilgrim0043\",\"role\":\"pilgrim\",\"slot_id\":\"207\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"203.0.113.22\",\"username\":\"pilgrim0043\",\"role\":\"pilgrim\",\"slot_id\":\"208\",\"result\":\"full\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110101,
+    110102
+   ]
+  },
+  {
+   "id": "UC01-04",
+   "title": "Load-test agent on the trusted list is ignored",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"200\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"201\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"202\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"203\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"204\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"205\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"206\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"207\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"208\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"209\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"210\",\"result\":\"full\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"booking_attempt\",\"srcip\":\"198.51.100.20\",\"username\":\"loadtest01\",\"role\":\"pilgrim\",\"slot_id\":\"211\",\"result\":\"full\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110101,
+    110102
+   ]
+  }
+ ]
+}

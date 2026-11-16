@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="hero">
+  <h1>Serving the guests of Allah, season 1448</h1>
+  <p>Book Hajj and Umrah packages, upload travel documents and track permit status, for pilgrims and licensed agencies.</p>
+  <div class="actions"><a class="btn" href="{{ url_for('login') }}">Sign in</a><a class="btn ghost" href="{{ url_for('permits') }}">Check a permit</a></div>
+</section>
+<section class="grid">
+  <div class="card"><h3>Pilgrims</h3><p>Reserve your arrival group, upload passport scans, follow your permit.</p></div>
+  <div class="card"><h3>Licensed agencies</h3><p>Manage your pilgrims and export manifests for the ministry.</p></div>
+  <div class="card"><h3>Operations</h3><p>Case handling, visa processing and package pricing.</p></div>
+</section>
+{% endblock %}

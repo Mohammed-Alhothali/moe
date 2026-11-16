@@ -1,0 +1,47 @@
+<!--
+  UC16 - Expired seasonal staff account used
+  Source : Security events 4624 (logon success) and 4625 (logon failure)
+  ATT&CK : T1078.003 Valid Accounts: Local Accounts
+
+  Context
+    Every Hajj season the operator creates hundreds of temporary accounts for seasonal staff and
+    guides. Accounts that outlive the season are a favourite way in: nobody notices them being used.
+    When the season closes, HR exports the expired accounts into etc/lists/pp-expired-seasonal.
+
+  Logic
+    111601  an expired seasonal account logs on successfully                   (level 13)
+    111602  someone tries to log on with an expired seasonal account and fails (level 10)
+
+  Engine note
+    111601 attaches with if_group authentication_success (plus event ID 4624), not if_sid 60106: logon
+    events reach a copy of 60106 that an if_sid child is never attached to (verified on the 4.14.9 engine).
+
+  False-positive control
+    * The list holds exact usernames as Windows logs them; it is regenerated from HR data each season.
+    * Accounts re-hired for the next season are removed from the list, not excluded in the rule.
+-->
+
+<group name="windows,pilgrim_endpoint,uc16,">
+
+  <rule id="111601" level="13">
+    <if_group>authentication_success</if_group>
+    <field name="win.system.eventID">^4624$</field>
+    <list field="win.eventdata.targetUserName" lookup="match_key">etc/lists/pp-expired-seasonal</list>
+    <description>UC16 Expired seasonal account $(win.eventdata.targetUserName) logged on to $(win.system.computer) (logon type $(win.eventdata.logonType), from $(win.eventdata.ipAddress)).</description>
+    <mitre>
+      <id>T1078.003</id>
+    </mitre>
+    <group>pp_seasonal_account,</group>
+  </rule>
+
+  <rule id="111602" level="10">
+    <if_sid>60122</if_sid>
+    <list field="win.eventdata.targetUserName" lookup="match_key">etc/lists/pp-expired-seasonal</list>
+    <description>UC16 Logon attempt with expired seasonal account $(win.eventdata.targetUserName) on $(win.system.computer) (from $(win.eventdata.ipAddress)).</description>
+    <mitre>
+      <id>T1078.003</id>
+    </mitre>
+    <group>pp_seasonal_account,</group>
+  </rule>
+
+</group>

@@ -1,0 +1,115 @@
+{
+ "use_case": "UC08",
+ "cases": [
+  {
+   "id": "UC08-01",
+   "title": "Finance approver gives a 35% discount -> 110801",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"price_override\",\"srcip\":\"192.168.20.40\",\"username\":\"fin.approver01\",\"role\":\"staff\",\"package_id\":\"VIP-1448\",\"list_price\":\"45000\",\"new_price\":\"29250\",\"discount_pct\":\"35\",\"reason_code\":\"GOODWILL\",\"booking_ref\":\"BK-77812\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110801
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC08-02",
+   "title": "Non-approver changes a price (10%) -> 110802",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"price_override\",\"srcip\":\"192.168.20.40\",\"username\":\"staff.ops02\",\"role\":\"staff\",\"package_id\":\"VIP-1448\",\"list_price\":\"45000\",\"new_price\":\"40500\",\"discount_pct\":\"10\",\"reason_code\":\"GOODWILL\",\"booking_ref\":\"BK-77812\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110802
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC08-03",
+   "title": "Non-approver gives a 90% discount -> 110803 (level 14)",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"price_override\",\"srcip\":\"192.168.20.40\",\"username\":\"staff.ops02\",\"role\":\"staff\",\"package_id\":\"VIP-1448\",\"list_price\":\"45000\",\"new_price\":\"4500\",\"discount_pct\":\"90\",\"reason_code\":\"GOODWILL\",\"booking_ref\":\"BK-77812\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110803
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC08-04",
+   "title": "Approver makes 4 small overrides in 10 minutes -> 110804",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"price_override\",\"srcip\":\"192.168.20.40\",\"username\":\"fin.approver02\",\"role\":\"staff\",\"package_id\":\"VIP-1448\",\"list_price\":\"45000\",\"new_price\":\"42750\",\"discount_pct\":\"5\",\"reason_code\":\"GOODWILL\",\"booking_ref\":\"BK-77812\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"price_override\",\"srcip\":\"192.168.20.40\",\"username\":\"fin.approver02\",\"role\":\"staff\",\"package_id\":\"VIP-1448\",\"list_price\":\"45000\",\"new_price\":\"42750\",\"discount_pct\":\"5\",\"reason_code\":\"GOODWILL\",\"booking_ref\":\"BK-77812\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"price_override\",\"srcip\":\"192.168.20.40\",\"username\":\"fin.approver02\",\"role\":\"staff\",\"package_id\":\"VIP-1448\",\"list_price\":\"45000\",\"new_price\":\"42750\",\"discount_pct\":\"5\",\"reason_code\":\"GOODWILL\",\"booking_ref\":\"BK-77812\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"price_override\",\"srcip\":\"192.168.20.40\",\"username\":\"fin.approver02\",\"role\":\"staff\",\"package_id\":\"VIP-1448\",\"list_price\":\"45000\",\"new_price\":\"42750\",\"discount_pct\":\"5\",\"reason_code\":\"GOODWILL\",\"booking_ref\":\"BK-77812\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 4,
+     "rule": 110804
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC08-05",
+   "title": "Approver gives a 10% goodwill discount (audit trail only)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"price_override\",\"srcip\":\"192.168.20.40\",\"username\":\"fin.approver01\",\"role\":\"staff\",\"package_id\":\"VIP-1448\",\"list_price\":\"45000\",\"new_price\":\"40500\",\"discount_pct\":\"10\",\"reason_code\":\"GOODWILL\",\"booking_ref\":\"BK-77812\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110801,
+    110802,
+    110803,
+    110804
+   ]
+  }
+ ]
+}

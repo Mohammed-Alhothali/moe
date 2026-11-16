@@ -1,0 +1,27 @@
+<!--
+  Pilgrim Services Portal - custom decoder
+  Log source : /var/log/pilgrim-portal/portal.log  (web01, Wazuh agent, log_format=syslog)
+
+  Each line has a syslog header followed by a JSON body:
+    Nov 10 20:15:03 web01 pilgrim-portal[812]: {"event":"login_failed","srcip":"203.0.113.9","username":"pilgrim0042",...}
+
+  How it works
+    1. Wazuh's pre-decoder reads the syslog header and sets program_name = "pilgrim-portal".
+    2. The parent decoder claims every event whose program_name is exactly pilgrim-portal.
+       Because it keys on program_name, the built-in generic "json" decoder never sees these lines.
+    3. The child decoder hands the JSON body to Wazuh's JSON plugin, so every key becomes a field
+       usable in rules: event, username, role, country, result, pilgrim_id, record_count ...
+       The key "srcip" lands in Wazuh's static source-IP field, which is what same_srcip,
+       CDB address lookups and active response all rely on.
+
+  Verified with the Wazuh 4.14.9 rule engine (wazuh-logtest).
+-->
+
+<decoder name="pilgrim-portal">
+  <program_name>^pilgrim-portal$</program_name>
+</decoder>
+
+<decoder name="pilgrim-portal-fields">
+  <parent>pilgrim-portal</parent>
+  <plugin_decoder>JSON_Decoder</plugin_decoder>
+</decoder>

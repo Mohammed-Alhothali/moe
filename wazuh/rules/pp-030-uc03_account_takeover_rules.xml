@@ -1,0 +1,45 @@
+<!--
+  UC03 - Account takeover: successful login right after a credential attack
+  Source : pilgrim portal audit log (login_success) correlated with UC02 alerts
+  ATT&CK : T1110 Brute Force -> T1078 Valid Accounts
+
+  Logic
+    110301  login success from an IP that raised a UC02 alert in the last 10 minutes
+    110302  login success for an account that was the target of password guessing (UC02 110203)
+            in the last 10 minutes, even if the attacker switched IP
+
+  Why it matters
+    A failed attack is noise; a failed attack followed by a success is a compromised account.
+    For an agency account that is thousands of pilgrims' bookings, passports and payments.
+
+  Note on grouping
+    Both rules also carry pp_login_success so UC04 (impossible travel) still counts these logins.
+-->
+
+<group name="pilgrim_portal,uc03,">
+
+  <rule id="110301" level="13" timeframe="600">
+    <if_sid>110010</if_sid>
+    <if_matched_group>pp_bruteforce</if_matched_group>
+    <same_srcip />
+    <description>UC03 Account takeover suspected: $(username) logged in from $(srcip) right after a credential attack from the same IP.</description>
+    <mitre>
+      <id>T1110</id>
+      <id>T1078</id>
+    </mitre>
+    <group>pp_account_takeover,pp_login_success,</group>
+  </rule>
+
+  <rule id="110302" level="13" timeframe="600">
+    <if_sid>110010</if_sid>
+    <if_matched_group>pp_password_guessing</if_matched_group>
+    <same_field>username</same_field>
+    <description>UC03 Account takeover suspected: $(username) logged in (from $(srcip)) shortly after a password-guessing attack on that account.</description>
+    <mitre>
+      <id>T1110.001</id>
+      <id>T1078</id>
+    </mitre>
+    <group>pp_account_takeover,pp_login_success,</group>
+  </rule>
+
+</group>

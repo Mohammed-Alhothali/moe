@@ -1,0 +1,142 @@
+<!--
+  Pilgrim Services Portal - base rules (110000-110099)
+
+  These rules classify every portal audit event. They are the building blocks the use-case
+  rules (UC01-UC09) count and correlate.
+
+  Design note - why the base rules are level 2-3, never 0:
+    In the Wazuh engine, an event whose final rule is level 0 is dropped before it is stored
+    for correlation, so a frequency rule built on a level-0 rule can never fire.
+    Level 2 events are below the default alert threshold (log_alert_level=3): they do not
+    fill the dashboard, but they DO feed correlation. Level 3 events are kept as audit trail.
+
+  Design note - one correlation mechanism per base rule:
+    The engine stores a matched event EITHER in the rule-ID history (if_matched_sid) OR in the
+    group history (if_matched_group) - never both. A base rule referenced both ways silently
+    feeds only the ID-based correlations. So every base rule that several use cases count
+    carries a dedicated group (pp_bad_password, pp_unknown_user ...) and is only ever
+    correlated by group.
+
+  Rule ID plan for the whole library: IDs read 11-UC-rule.
+    Base rules 1100xx, UC01 = 1101xx, UC09 = 1109xx, UC25 = 1125xx (e.g. 110203 = UC02 rule 03).
+    The 11xxxx range keeps clear of the 100xxx IDs that tutorials and course exercises use.
+-->
+
+<group name="pilgrim_portal,">
+
+  <rule id="110000" level="0">
+    <decoded_as>pilgrim-portal</decoded_as>
+    <description>Pilgrim portal: audit event.</description>
+  </rule>
+
+  <!-- Authentication -->
+  <rule id="110010" level="3">
+    <if_sid>110000</if_sid>
+    <field name="event">^login_success$</field>
+    <description>Pilgrim portal: login by $(username) [$(role)] from $(srcip) ($(country)).</description>
+    <group>pp_login_success,</group>
+  </rule>
+
+  <rule id="110011" level="3">
+    <if_sid>110000</if_sid>
+    <field name="event">^login_failed$</field>
+    <field name="reason">^bad_password$</field>
+    <description>Pilgrim portal: wrong password for existing account $(username) from $(srcip).</description>
+    <group>pp_login_failed,pp_bad_password,</group>
+  </rule>
+
+  <rule id="110012" level="3">
+    <if_sid>110000</if_sid>
+    <field name="event">^login_failed$</field>
+    <field name="reason">^unknown_user$</field>
+    <description>Pilgrim portal: login attempt for non-existent account $(username) from $(srcip).</description>
+    <group>pp_login_failed,pp_unknown_user,</group>
+  </rule>
+
+  <!-- Business activity (level 2 = counted for correlation, not shown as alerts) -->
+  <rule id="110013" level="2">
+    <if_sid>110000</if_sid>
+    <field name="event">^booking_attempt$</field>
+    <description>Pilgrim portal: booking attempt by $(username) on slot $(slot_id) - $(result).</description>
+    <group>pp_booking,</group>
+  </rule>
+
+  <rule id="110014" level="2">
+    <if_sid>110000</if_sid>
+    <field name="event">^record_view$</field>
+    <field name="result">^allowed$</field>
+    <description>Pilgrim portal: $(username) opened pilgrim record $(pilgrim_id).</description>
+    <group>pp_record_access,</group>
+  </rule>
+
+  <rule id="110015" level="3">
+    <if_sid>110000</if_sid>
+    <field name="event">^record_view$</field>
+    <field name="result">^denied$</field>
+    <description>Pilgrim portal: $(username) [$(role)] was denied access to pilgrim record $(pilgrim_id).</description>
+    <group>pp_record_access,pp_record_denied,</group>
+  </rule>
+
+  <rule id="110016" level="2">
+    <if_sid>110000</if_sid>
+    <field name="event">^permit_search$</field>
+    <description>Pilgrim portal: permit search from $(srcip).</description>
+    <group>pp_search,</group>
+  </rule>
+
+  <rule id="110017" level="3">
+    <if_sid>110000</if_sid>
+    <field name="event">^price_override$</field>
+    <description>Pilgrim portal: $(username) overrode the price of $(package_id) ($(list_price) to $(new_price), $(discount_pct)% off).</description>
+    <group>pp_price_override,</group>
+  </rule>
+
+  <rule id="110018" level="3">
+    <if_sid>110000</if_sid>
+    <field name="event">^data_export$</field>
+    <description>Pilgrim portal: $(username) [$(role)] exported $(record_count) pilgrim records (scope: $(scope)).</description>
+    <group>pp_export,</group>
+  </rule>
+
+  <rule id="110019" level="3">
+    <if_sid>110000</if_sid>
+    <field name="event">^doc_upload$</field>
+    <description>Pilgrim portal: document upload by $(username) - $(result) ($(filename)).</description>
+    <group>pp_upload,</group>
+  </rule>
+
+  <rule id="110020" level="2">
+    <if_sid>110000</if_sid>
+    <field name="event">^logout$</field>
+    <description>Pilgrim portal: logout by $(username).</description>
+    <group>pp_logout,</group>
+  </rule>
+
+  <!--
+    Tuning: duplicate web-server alerts.
+    The portal answers a failed sign-in with HTTP 401 and a refused record with 403/404. Wazuh's
+    generic rule 31101 ("Web server 400 error code") would raise an extra alert for each of them,
+    although UC02 and UC05 already cover these actions from the portal's audit log with full context
+    (account, reason, record). These rules claim exactly those requests first (level 6 is tried before
+    31101's level 5) and use no_log so they never reach the dashboard. Every other 4xx - a scanner
+    probing /wp-admin, for example - still raises 31101 as before.
+  -->
+  <rule id="110021" level="6">
+    <if_sid>31100</if_sid>
+    <url>^/login</url>
+    <id>^401$</id>
+    <options>no_log</options>
+    <description>Pilgrim portal: failed sign-in in the nginx log (HTTP 401) - not alerted, UC02 covers it from the portal audit log.</description>
+    <group>pp_tuning,</group>
+  </rule>
+
+  <rule id="110022" level="6">
+    <if_sid>31100</if_sid>
+    <url type="pcre2">^/records/\d+$</url>
+    <id>^403$|^404$</id>
+    <options>no_log</options>
+    <description>Pilgrim portal: refused record request in the nginx log - not alerted, UC05 covers it from the portal audit log.</description>
+    <group>pp_tuning,</group>
+  </rule>
+
+</group>

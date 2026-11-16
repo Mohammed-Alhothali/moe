@@ -1,0 +1,314 @@
+{
+ "use_case": "UC22",
+ "cases": [
+  {
+   "id": "UC22-01",
+   "title": "PsExec service installed -> 112201",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Service Control Manager",
+      "providerGuid": "{555908d1-a6d7-4695-8e1e-26931d2012f4}",
+      "channel": "System",
+      "level": 4,
+      "keywords": "0x8080000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 7045
+     },
+     "eventdata": {
+      "ServiceName": "PSEXESVC",
+      "ImagePath": "%SystemRoot%\\PSEXESVC.exe",
+      "ServiceType": "user mode service",
+      "StartType": "demand start",
+      "AccountName": "LocalSystem"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112201
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC22-02",
+   "title": "smbexec-style service running a cmd one-liner -> 112201",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Service Control Manager",
+      "providerGuid": "{555908d1-a6d7-4695-8e1e-26931d2012f4}",
+      "channel": "System",
+      "level": 4,
+      "keywords": "0x8080000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 7045
+     },
+     "eventdata": {
+      "ServiceName": "BTOBTO",
+      "ImagePath": "%COMSPEC% /Q /c echo cd ^> \\\\127.0.0.1\\C$\\__output 2^>^&1 > %TEMP%\\execute.bat",
+      "ServiceType": "user mode service",
+      "StartType": "demand start",
+      "AccountName": "LocalSystem"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112201
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC22-03",
+   "title": "Service binary in C:\\Users\\Public -> 112202",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Service Control Manager",
+      "providerGuid": "{555908d1-a6d7-4695-8e1e-26931d2012f4}",
+      "channel": "System",
+      "level": 4,
+      "keywords": "0x8080000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 7045
+     },
+     "eventdata": {
+      "ServiceName": "PilgrimUpdate",
+      "ImagePath": "C:\\Users\\Public\\pupdate.exe",
+      "ServiceType": "user mode service",
+      "StartType": "demand start",
+      "AccountName": "LocalSystem"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112202
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC22-04",
+   "title": "PSEXESVC named pipe -> 112203",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 17
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "EventType": "CreatePipe",
+      "UtcTime": "2026-11-11 10:00:01.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555558}",
+      "ProcessId": "6100",
+      "PipeName": "\\PSEXESVC-WIN10-LAB-4242-stdin",
+      "Image": "C:\\Windows\\PSEXESVC.exe",
+      "User": "NT AUTHORITY\\SYSTEM"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112203
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC22-05",
+   "title": "Command started by PSEXESVC -> 112204",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\cmd.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "Cmd.Exe",
+      "CommandLine": "cmd /c whoami",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "NT AUTHORITY\\SYSTEM",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\PSEXESVC.exe",
+      "ParentCommandLine": "C:\\Windows\\PSEXESVC.exe",
+      "ParentUser": "NT AUTHORITY\\SYSTEM"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112204
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC22-06",
+   "title": "Service install, then its pipe -> 112205",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Service Control Manager",
+      "providerGuid": "{555908d1-a6d7-4695-8e1e-26931d2012f4}",
+      "channel": "System",
+      "level": 4,
+      "keywords": "0x8080000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 7045
+     },
+     "eventdata": {
+      "ServiceName": "PSEXESVC",
+      "ImagePath": "%SystemRoot%\\PSEXESVC.exe",
+      "ServiceType": "user mode service",
+      "StartType": "demand start",
+      "AccountName": "LocalSystem"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 17
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "EventType": "CreatePipe",
+      "UtcTime": "2026-11-11 10:00:01.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555558}",
+      "ProcessId": "6100",
+      "PipeName": "\\PSEXESVC",
+      "Image": "C:\\Windows\\PSEXESVC.exe",
+      "User": "NT AUTHORITY\\SYSTEM"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112201
+    },
+    {
+     "at": 2,
+     "rule": 112205
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC22-07",
+   "title": "Normal software installs a service under Program Files (no UC22 alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Service Control Manager",
+      "providerGuid": "{555908d1-a6d7-4695-8e1e-26931d2012f4}",
+      "channel": "System",
+      "level": 4,
+      "keywords": "0x8080000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 7045
+     },
+     "eventdata": {
+      "ServiceName": "PilgrimPrinterHelper",
+      "ImagePath": "\"C:\\Program Files\\Pilgrim\\PrinterHelper.exe\"",
+      "ServiceType": "user mode service",
+      "StartType": "demand start",
+      "AccountName": "LocalSystem"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 61138
+    }
+   ],
+   "forbid": [
+    112201,
+    112202
+   ]
+  },
+  {
+   "id": "UC22-08",
+   "title": "Defender platform update re-registers its service (no UC22 alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Service Control Manager",
+      "providerGuid": "{555908d1-a6d7-4695-8e1e-26931d2012f4}",
+      "channel": "System",
+      "level": 4,
+      "keywords": "0x8080000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 7045
+     },
+     "eventdata": {
+      "ServiceName": "WinDefend",
+      "ImagePath": "\"C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.24090.11-0\\MsMpEng.exe\"",
+      "ServiceType": "user mode service",
+      "StartType": "demand start",
+      "AccountName": "LocalSystem"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112201,
+    112202
+   ]
+  }
+ ]
+}

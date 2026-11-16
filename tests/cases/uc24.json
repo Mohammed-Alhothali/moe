@@ -1,0 +1,1433 @@
+{
+ "use_case": "UC24",
+ "cases": [
+  {
+   "id": "UC24-01",
+   "title": "20 unique 40-character subdomains from one process in a minute -> 112402",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "b6589fc6ab0dc82cf12099d1c2d40ab994e8410c.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "356a192b7913b04c54574d18c28d46e6395428ab.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "da4b9237bacccdf19c0760cab7aec4a8359010b0.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "77de68daecd823babbb58edb1c8e14d7106e83bb.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "1b6453892473a467d07372d45eb05abc2031647a.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "ac3478d69a3c81fa62e60f5c3696165a4e5e6ac4.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "c1dfd96eea8cc2b62785275bca38ac261256e278.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "902ba3cda1883801594b6e1b452790cc53948fda.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "fe5dbbcea5ce7e2988b8c69bcfdfde8904aabc1f.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "0ade7c2cf97f75d009975f4d720d1fa6c19f4897.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "b1d5781111d84f7b3fe45a0852e59758cd7a87e5.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "17ba0791499db908433b80f37c5fbc89b870084b.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "7b52009b64fd0a2a49e6d8a939753077792b0554.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "bd307a3ec329e10a2cff8fb87480823da114f8f4.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "f1abd670358e036c31296e66b3b66c382ac00812.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "1574bddb75c78a6fd2251d61e2993b5146201319.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "0716d9708d321ffb6a00818614779e779925365c.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "9e6a55b6b4563e652a23be9d623ca5055c356940.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 20,
+     "rule": 112402
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC24-02",
+   "title": "Lookup of an ngrok tunnel host -> 112403",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "2f1c-198-51-100-9.ngrok-free.app",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112403
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC24-03",
+   "title": "Lookup of an interactsh / OAST host -> 112403",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "c59gh2qk2v0000000000gdkyyyyyyyyyb.oast.fun",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112403
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC24-04",
+   "title": "Same long name repeated 20 times (cache refresh, no burst)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "11f6ad8ec52a2984abaafd7c3b516503785c2072.exfil.example.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112402
+   ]
+  },
+  {
+   "id": "UC24-05",
+   "title": "Long AWS load-balancer names are excluded (no burst)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0000-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0001-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0002-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0003-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0004-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0005-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0006-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0007-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0008-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0009-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0010-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0011-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0012-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0013-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0014-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0015-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0016-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0017-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0018-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 22
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:10:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-55555555555a}",
+      "ProcessId": "6400",
+      "QueryName": "pilgrim-booking-api-prod-0019-1234567890.eu-central-1.elb.amazonaws.com",
+      "QueryStatus": "9003",
+      "QueryResults": "-",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112402
+   ]
+  }
+ ]
+}

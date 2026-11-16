@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="panel">
+  <h2>Package price override</h2>
+  <p class="muted">Every override is logged and reviewed by the SOC. Only finance approvers should grant large discounts.</p>
+  <form method="post" class="inline">
+    <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+    <select name="package_id">{% for p in packages %}<option value="{{ p.id }}">{{ p.name }} · {{ "{:,}".format(p.price) }} SAR</option>{% endfor %}</select>
+    <input name="booking_ref" placeholder="Booking ref" maxlength="20">
+    <input name="new_price" type="number" min="0" placeholder="New price (SAR)" required>
+    <select name="reason_code"><option>GOODWILL</option><option>VIP_GUEST</option><option>COMPENSATION</option><option>OTHER</option></select>
+    <button class="btn">Apply</button>
+  </form>
+  <h3>Recent overrides</h3>
+  <table><tr><th>By</th><th>Package</th><th>Booking</th><th>List</th><th>New</th><th>Reason</th></tr>
+  {% for o in recent %}<tr><td>{{ o.username }}</td><td>{{ o.package_id }}</td><td>{{ o.booking_ref }}</td><td>{{ "{:,}".format(o.list_price) }}</td><td>{{ "{:,}".format(o.new_price) }}</td><td>{{ o.reason_code }}</td></tr>
+  {% else %}<tr><td colspan="6" class="muted">None yet.</td></tr>{% endfor %}</table>
+</section>
+{% endblock %}

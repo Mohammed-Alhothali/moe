@@ -1,0 +1,57 @@
+<!--
+  UC13 - Persistence through registry autorun keys
+  Source : Sysmon event 13 (registry value set), limited by pilgrim-sysmon.xml to autorun and Defender keys
+  ATT&CK : T1547.001 Registry Run Keys / Startup Folder
+
+  Logic
+    111301  a value is written under Run / RunOnce / RunServices (refines Wazuh's level-0 classifier 92300)
+    111303  Winlogon Userinit/Shell or Policies\Explorer\Run is changed (keys 92300 does not cover)
+    111302    ...either of them launches something from a user-writable folder or through a script host
+              (powershell, mshta, wscript, rundll32, cmd /c) - the classic malware pattern
+
+  Engine note
+    Wazuh loads level-0 rules as level 99, so they are tried BEFORE all their siblings. Built-in 92300
+    (level 0) classifies every Run-key write; a sibling rule would never be evaluated for those events.
+    So 111301 hangs under 92300 itself, and 111303 covers the keys 92300 does not match.
+
+  False-positive control
+    * Installers (msiexec, setup programs, OneDrive) write Run keys legitimately and are excluded by
+      process image with negate="yes".
+    * Software installed in Program Files only reaches 111301 (medium); 111302 needs the suspicious target.
+-->
+
+<group name="windows,sysmon,pilgrim_endpoint,uc13,">
+
+  <rule id="111301" level="8">
+    <if_sid>92300</if_sid>
+    <field name="win.eventdata.image" type="pcre2" negate="yes">(?i)\\(msiexec|OneDriveSetup|OneDrive|TrustedInstaller|setup[^\\]*)\.exe$</field>
+    <description>UC13 Autorun registry value set on $(win.system.computer) by $(win.eventdata.image): $(win.eventdata.targetObject)</description>
+    <mitre>
+      <id>T1547.001</id>
+    </mitre>
+    <group>pp_persistence,</group>
+  </rule>
+
+  <rule id="111303" level="8">
+    <if_group>sysmon_event_13</if_group>
+    <field name="win.eventdata.targetObject" type="pcre2">(?i)\\Policies\\+Explorer\\+Run\\+|\\Winlogon\\+(Userinit|Shell)$</field>
+    <field name="win.eventdata.image" type="pcre2" negate="yes">(?i)\\(msiexec|TrustedInstaller|setup[^\\]*)\.exe$</field>
+    <description>UC13 Logon autostart changed on $(win.system.computer) by $(win.eventdata.image): $(win.eventdata.targetObject)</description>
+    <mitre>
+      <id>T1547.001</id>
+      <id>T1547.004</id>
+    </mitre>
+    <group>pp_persistence,</group>
+  </rule>
+
+  <rule id="111302" level="12">
+    <if_sid>111301, 111303</if_sid>
+    <field name="win.eventdata.details" type="pcre2">(?i)\\+(AppData|Temp|Users\\+Public|ProgramData|Downloads)\\+|\b(powershell|pwsh|mshta|wscript|cscript|rundll32|regsvr32)(\.exe)?\b|\bcmd(\.exe)?\s+/c</field>
+    <description>UC13 Malicious-looking autorun on $(win.system.computer): $(win.eventdata.targetObject) = $(win.eventdata.details)</description>
+    <mitre>
+      <id>T1547.001</id>
+    </mitre>
+    <group>pp_persistence,</group>
+  </rule>
+
+</group>

@@ -1,0 +1,105 @@
+{
+ "use_case": "UC09",
+ "cases": [
+  {
+   "id": "UC09-01",
+   "title": "Approved reporting account exports 1,500 records in working hours -> 110901",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"data_export\",\"srcip\":\"192.168.20.45\",\"username\":\"staff.reporting\",\"role\":\"staff\",\"record_count\":\"1500\",\"scope\":\"all\",\"export_format\":\"csv\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110901
+    }
+   ],
+   "forbid": [],
+   "local_hour": 11
+  },
+  {
+   "id": "UC09-02",
+   "title": "Largest agency exports its own 1,200 pilgrims -> 110902 (not an approved exporter)",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"data_export\",\"srcip\":\"192.168.20.45\",\"username\":\"agency.in01\",\"role\":\"agency\",\"record_count\":\"1200\",\"scope\":\"own\",\"export_format\":\"csv\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110902
+    }
+   ],
+   "forbid": [],
+   "local_hour": 11
+  },
+  {
+   "id": "UC09-03",
+   "title": "Approved account exports at 23:00 -> 110903",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"data_export\",\"srcip\":\"192.168.20.45\",\"username\":\"staff.reporting\",\"role\":\"staff\",\"record_count\":\"1500\",\"scope\":\"all\",\"export_format\":\"csv\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110903
+    }
+   ],
+   "forbid": [],
+   "local_hour": 23
+  },
+  {
+   "id": "UC09-04",
+   "title": "Non-approved account exports at 02:00 -> 110904 (level 14)",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"data_export\",\"srcip\":\"192.168.20.45\",\"username\":\"staff.ops03\",\"role\":\"staff\",\"record_count\":\"1500\",\"scope\":\"all\",\"export_format\":\"csv\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110904
+    }
+   ],
+   "forbid": [],
+   "local_hour": 2
+  },
+  {
+   "id": "UC09-05",
+   "title": "Agency exports its own 300 pilgrims (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"data_export\",\"srcip\":\"192.168.20.45\",\"username\":\"agency.pk01\",\"role\":\"agency\",\"record_count\":\"300\",\"scope\":\"own\",\"export_format\":\"csv\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110901,
+    110902,
+    110903,
+    110904
+   ],
+   "local_hour": 11
+  }
+ ]
+}

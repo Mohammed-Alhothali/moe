@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.db
+*.db-shm
+*.db-wal
+.env
+console.env
+*.pem
+*.key
+.DS_Store
+Thumbs.db

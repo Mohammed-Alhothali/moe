@@ -1,0 +1,216 @@
+{
+ "use_case": "UC06",
+ "cases": [
+  {
+   "id": "UC06-01",
+   "title": "Encoded tautology in the URL -> 110601",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.60 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=%27%20OR%20%271%27%3D%271 HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110601
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC06-02",
+   "title": "UNION SELECT and time-based probes, 5 in a row from one IP -> 110602",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.61 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=%27%20OR%20%271%27%3D%271 HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.61 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=x%27+UNION+SELECT+NULL%2CNULL-- HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.61 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=1%27+AND+SLEEP%285%29-- HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.61 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=x%27+UNION+SELECT+NULL%2CNULL-- HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.61 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=%27%20OR%20%271%27%3D%271 HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110601
+    },
+    {
+     "at": 5,
+     "rule": 110602
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC06-03",
+   "title": "Injection grammar in the decoded search parameter -> 110603",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"permit_search\",\"srcip\":\"203.0.113.62\",\"username\":\"-\",\"role\":\"anonymous\",\"q\":\"x' OR 'a'='a\",\"rows\":\"0\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110603
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC06-04",
+   "title": "Same request seen by the app and then the edge -> 110604",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"permit_search\",\"srcip\":\"203.0.113.63\",\"username\":\"-\",\"role\":\"anonymous\",\"q\":\"x' OR 'a'='a\",\"rows\":\"0\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.63 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=%27%20OR%20%271%27%3D%271 HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110603
+    },
+    {
+     "at": 2,
+     "rule": 110604
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC06-06",
+   "title": "Found live: 5 injection searches seen by app then edge -> burst 110605",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"permit_search\",\"srcip\":\"203.0.113.66\",\"username\":\"-\",\"role\":\"anonymous\",\"q\":\"x' OR 'a'='a\",\"rows\":\"0\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.66 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=%27%20OR%20%271%27%3D%271 HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"permit_search\",\"srcip\":\"203.0.113.66\",\"username\":\"-\",\"role\":\"anonymous\",\"q\":\"x' OR 'a'='a\",\"rows\":\"0\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.66 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=%27%20OR%20%271%27%3D%271 HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"permit_search\",\"srcip\":\"203.0.113.66\",\"username\":\"-\",\"role\":\"anonymous\",\"q\":\"x' OR 'a'='a\",\"rows\":\"0\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.66 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=%27%20OR%20%271%27%3D%271 HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"permit_search\",\"srcip\":\"203.0.113.66\",\"username\":\"-\",\"role\":\"anonymous\",\"q\":\"x' OR 'a'='a\",\"rows\":\"0\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.66 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=%27%20OR%20%271%27%3D%271 HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"permit_search\",\"srcip\":\"203.0.113.66\",\"username\":\"-\",\"role\":\"anonymous\",\"q\":\"x' OR 'a'='a\",\"rows\":\"0\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.66 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=%27%20OR%20%271%27%3D%271 HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    }
+   ],
+   "expect": [
+    {
+     "at": 2,
+     "rule": 110604
+    },
+    {
+     "at": 10,
+     "rule": 110605
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC06-05",
+   "title": "Legitimate searches with an apostrophe or the word union (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"permit_search\",\"srcip\":\"203.0.113.64\",\"username\":\"-\",\"role\":\"anonymous\",\"q\":\"Abdullah D'Or\",\"rows\":\"1\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.64 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=Abdullah+D%27Or HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"permit_search\",\"srcip\":\"203.0.113.64\",\"username\":\"-\",\"role\":\"anonymous\",\"q\":\"Union Travel\",\"rows\":\"2\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.64 - - [10/Nov/2026:20:15:03 +0300] \"GET /permits?q=Union+Travel HTTP/1.1\" 200 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110601,
+    110602,
+    110603,
+    110604
+   ]
+  }
+ ]
+}

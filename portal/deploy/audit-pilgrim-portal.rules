@@ -1,0 +1,7 @@
+## Pilgrim portal - UC07: any program executed by the web tier.
+## Neither nginx workers (www-data) nor the portal service user ever start programs in normal operation.
+## ppid!=1 skips the one legitimate exec: systemd starting the service itself.
+-a always,exit -F arch=b64 -S execve -F euid=@WWW_UID@ -F ppid!=1 -k pp_web_exec
+-a always,exit -F arch=b32 -S execve -F euid=@WWW_UID@ -F ppid!=1 -k pp_web_exec
+-a always,exit -F arch=b64 -S execve -F euid=@PORTAL_UID@ -F ppid!=1 -k pp_web_exec
+-a always,exit -F arch=b32 -S execve -F euid=@PORTAL_UID@ -F ppid!=1 -k pp_web_exec

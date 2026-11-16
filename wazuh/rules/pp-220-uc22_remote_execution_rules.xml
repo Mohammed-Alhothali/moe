@@ -1,0 +1,84 @@
+<!--
+  UC22 - Lateral movement through remote services (PsExec and look-alikes)
+  Source : System 7045 (service installed), Sysmon event 17/18 (named pipe), Sysmon event 1
+  ATT&CK : T1021.002 SMB/Windows Admin Shares, T1569.002 Service Execution,
+           T1543.003 Windows Service
+
+  Logic
+    112201  a service was installed whose binary or command is a remote-execution tool (PSEXESVC,
+            RemCom, PAExec, csexec, winexesvc) or a shell one-liner (%COMSPEC% / cmd /c / powershell,
+            the pattern of Impacket smbexec-style tools)
+    112202  any new service whose binary lives in a user-writable folder (Users, Temp, AppData,
+            PerfLogs, ProgramData) - services installed this way are a persistence and
+            privilege-escalation trick
+    112203  a named pipe used by a remote-execution tool was created or connected
+    112204  a process was started by a remote-execution service
+    112205  confirmed remote execution: a 112201 service install followed within 2 minutes by its
+            pipe or child process on the same host
+
+  How it relates to Wazuh's own rules
+    Wazuh's 61138 raises every new service at level 5 and 92068 notes PsExec children at level 3.
+    These rules separate the dangerous installs from normal software installs.
+  False-positive control
+    * 112202 excludes the Microsoft Defender platform folder, which re-registers services on update.
+    * IT staff who use PsExec on purpose can be tuned by host or account after the first review;
+      PsExec use on a pilgrim-agency workstation is rare enough to keep visible.
+-->
+
+<group name="windows,pilgrim_endpoint,uc22,">
+
+  <rule id="112201" level="12">
+    <if_sid>61100, 61138</if_sid>
+    <field name="win.system.eventID">^7045$</field>
+    <field name="win.eventdata.imagePath" type="pcre2">(?i)PSEXESVC|RemCom|PAExec|csexec|winexesvc|%COMSPEC%|\bcmd(\.exe)?(?:\\?")?\s+/[ckq]\b|\bpowershell(\.exe)?\b|\\\\+127\.0\.0\.1\\+|\\+ADMIN\$\\+</field>
+    <description>UC22 Remote-execution service installed on $(win.system.computer): $(win.eventdata.serviceName) -> $(win.eventdata.imagePath)</description>
+    <mitre>
+      <id>T1569.002</id>
+      <id>T1021.002</id>
+    </mitre>
+    <group>pp_lateral,</group>
+  </rule>
+
+  <rule id="112202" level="10">
+    <if_sid>61100, 61138</if_sid>
+    <field name="win.system.eventID">^7045$</field>
+    <field name="win.eventdata.imagePath" type="pcre2">(?i)^(?!.*\\+ProgramData\\+Microsoft\\+Windows Defender\\+).*\\+(Users|Windows\\+Temp|Temp|AppData|PerfLogs|ProgramData)\\+</field>
+    <description>UC22 Service installed from a user-writable folder on $(win.system.computer): $(win.eventdata.serviceName) -> $(win.eventdata.imagePath)</description>
+    <mitre>
+      <id>T1543.003</id>
+    </mitre>
+    <group>pp_lateral,</group>
+  </rule>
+
+  <rule id="112203" level="12">
+    <if_sid>61645, 61646</if_sid>
+    <field name="win.eventdata.pipeName" type="pcre2">(?i)^\\+(PSEXESVC|RemCom_|paexec|csexec|winexesvc)</field>
+    <description>UC22 Remote-execution named pipe on $(win.system.computer): $(win.eventdata.pipeName) ($(win.eventdata.image))</description>
+    <mitre>
+      <id>T1021.002</id>
+    </mitre>
+    <group>pp_lateral,pp_remote_exec_activity,</group>
+  </rule>
+
+  <rule id="112204" level="10">
+    <if_sid>92068, 61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.parentImage" type="pcre2">(?i)\\(PSEXESVC|RemComSvc|PAExec[^\\]*|csexecsvc|winexesvc)\.exe$</field>
+    <description>UC22 Command run through a remote-execution service on $(win.system.computer): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1569.002</id>
+    </mitre>
+    <group>pp_lateral,pp_remote_exec_activity,</group>
+  </rule>
+
+  <rule id="112205" level="14" timeframe="120" ignore="120">
+    <if_group>pp_remote_exec_activity</if_group>
+    <if_matched_sid>112201</if_matched_sid>
+    <description>UC22 Remote execution confirmed on $(win.system.computer): a remote-execution service was installed and is now running commands</description>
+    <mitre>
+      <id>T1021.002</id>
+      <id>T1569.002</id>
+    </mitre>
+    <group>pp_lateral,</group>
+  </rule>
+
+</group>

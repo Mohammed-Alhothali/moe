@@ -1,0 +1,67 @@
+<!--
+  UC09 - Bulk export of pilgrim data
+  Source : pilgrim portal audit log (event=data_export)
+  ATT&CK : T1213 Data from Information Repositories (collection before exfiltration)
+
+  Context
+    Agencies and staff can export pilgrim lists (names, passports, phones). A leaked list is
+    exactly what fake-Hajj-package scammers buy. Normal exports are an agency's own few hundred
+    pilgrims; thousands of records in one go is rare and should be explained.
+
+  Logic (siblings are evaluated highest level first; children refine the parent)
+    110901  export of 1,000+ records                                          level 10
+    110902    ...by an account not on the approved-exporters list             level 13
+    110904      ...and outside working hours (22:00-06:00)                     level 14
+    110903    ...outside working hours (approved account)                     level 12
+
+  Wazuh 4.x has no numeric comparison, so ">= 1000" is the regex ^[1-9]\d{3,}$ on record_count.
+
+  False-positive control
+    * etc/lists/pp-approved-exporters (owned by the Data Protection Officer) lists the reporting
+      accounts that legitimately pull full extracts.
+    * Working hours use the manager's clock; adjust <time> for the season's 24/7 operations shifts.
+-->
+
+<group name="pilgrim_portal,uc09,">
+
+  <rule id="110901" level="10">
+    <if_sid>110018</if_sid>
+    <field name="record_count" type="pcre2">^[1-9]\d{3,}$</field>
+    <description>UC09 Bulk export: $(username) [$(role)] exported $(record_count) pilgrim records (scope: $(scope)).</description>
+    <mitre>
+      <id>T1213</id>
+    </mitre>
+    <group>pp_bulk_export,</group>
+  </rule>
+
+  <rule id="110902" level="13">
+    <if_sid>110901</if_sid>
+    <list field="username" lookup="not_match_key">etc/lists/pp-approved-exporters</list>
+    <description>UC09 Bulk export by a non-approved account: $(username) [$(role)] exported $(record_count) pilgrim records.</description>
+    <mitre>
+      <id>T1213</id>
+    </mitre>
+    <group>pp_bulk_export,</group>
+  </rule>
+
+  <rule id="110903" level="12">
+    <if_sid>110901</if_sid>
+    <time>10 pm - 6 am</time>
+    <description>UC09 Off-hours bulk export: $(username) exported $(record_count) pilgrim records outside working hours.</description>
+    <mitre>
+      <id>T1213</id>
+    </mitre>
+    <group>pp_bulk_export,</group>
+  </rule>
+
+  <rule id="110904" level="14">
+    <if_sid>110902</if_sid>
+    <time>10 pm - 6 am</time>
+    <description>UC09 Off-hours bulk export by a non-approved account: $(username) exported $(record_count) pilgrim records.</description>
+    <mitre>
+      <id>T1213</id>
+    </mitre>
+    <group>pp_bulk_export,</group>
+  </rule>
+
+</group>

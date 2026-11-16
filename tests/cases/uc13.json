@@ -1,0 +1,163 @@
+{
+ "use_case": "UC13",
+ "cases": [
+  {
+   "id": "UC13-01",
+   "title": "Run key launching an EXE from AppData -> 111302",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 13
+     },
+     "eventdata": {
+      "EventType": "SetValue",
+      "TargetObject": "HKU\\S-1-5-21-1111111111-2222222222-3333333333-1001\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Updater",
+      "Details": "C:\\Users\\ahmed\\AppData\\Roaming\\upd.exe",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111302
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC13-02",
+   "title": "Run key written by a normal application in Program Files -> 111301 (medium)",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 13
+     },
+     "eventdata": {
+      "EventType": "SetValue",
+      "TargetObject": "HKU\\S-1-5-21-1111111111-2222222222-3333333333-1001\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Zoom",
+      "Details": "\"C:\\Program Files\\Zoom\\bin\\Zoom.exe\" --autostart",
+      "Image": "C:\\Program Files\\Zoom\\bin\\Zoom.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111301
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC13-04",
+   "title": "Winlogon Userinit hijacked to also start a file from Users\\Public -> 111302",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 13
+     },
+     "eventdata": {
+      "EventType": "SetValue",
+      "TargetObject": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Userinit",
+      "Details": "C:\\Windows\\system32\\userinit.exe,C:\\Users\\Public\\svc.exe",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111302
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC13-05",
+   "title": "Policies\\Explorer\\Run entry pointing at Program Files -> 111303 (medium)",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 13
+     },
+     "eventdata": {
+      "EventType": "SetValue",
+      "TargetObject": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run\\PilgrimAgent",
+      "Details": "\"C:\\Program Files\\Pilgrim\\agent.exe\"",
+      "Image": "C:\\Windows\\System32\\reg.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111303
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC13-03",
+   "title": "Installer (msiexec) writes a Run key (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 13
+     },
+     "eventdata": {
+      "EventType": "SetValue",
+      "TargetObject": "HKU\\S-1-5-21-1111111111-2222222222-3333333333-1001\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\VendorAgent",
+      "Details": "C:\\Program Files\\Vendor\\agent.exe",
+      "Image": "C:\\Windows\\System32\\msiexec.exe",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    111301,
+    111302
+   ]
+  }
+ ]
+}

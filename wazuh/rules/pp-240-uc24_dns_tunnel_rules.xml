@@ -1,0 +1,60 @@
+<!--
+  UC24 - Command-and-control or data theft over DNS
+  Source : Sysmon event 22 (DNS query)
+  ATT&CK : T1071.004 Application Layer Protocol: DNS, T1048 Exfiltration Over Alternative Protocol,
+           T1572 Protocol Tunneling
+
+  Logic
+    112401  a DNS query with a label of 30+ characters (where tunnels hide encoded data) - silent
+    112402  20 or more DIFFERENT long-label queries from the same process within 60 seconds
+    112403  a lookup of a tunnelling, dynamic-DNS or out-of-band testing service (ngrok,
+            trycloudflare, duckdns, no-ip, interactsh/oast, Burp Collaborator, dnslog, webhook.site...)
+
+  Why it matters here
+    Booking and visa systems sit behind firewalls that allow DNS everywhere. DNS is the channel
+    malware uses when the web proxy blocks it, and it can carry pilgrim records out a few bytes at
+    a time without any file transfer.
+  False-positive control
+    * Long labels alone are silent: CDNs and cloud load balancers use them, so only a burst of
+      unique ones from one process alerts.
+    * Known long-label services (AWS, Azure, Akamai, CloudFront, Sophos, Google user content) are
+      excluded in 112401.
+-->
+
+<group name="windows,sysmon,pilgrim_endpoint,uc24,">
+
+  <rule id="112401" level="2">
+    <if_sid>61650</if_sid>
+    <field name="win.eventdata.queryName" type="pcre2">(?i)^(?!.*\.(amazonaws\.com|cloudapp\.net|azurewebsites\.net|trafficmanager\.net|akamaiedge\.net|akamaized\.net|cloudfront\.net|sophosxl\.net|googleusercontent\.com)$)(.*\.)?[a-z0-9_-]{30,}\.</field>
+    <description>UC24 DNS query with a long label (classification): $(win.eventdata.queryName)</description>
+    <mitre>
+      <id>T1071.004</id>
+    </mitre>
+    <group>pp_dns_long,</group>
+  </rule>
+
+  <rule id="112402" level="12" frequency="20" timeframe="60" ignore="300">
+    <if_group>pp_dns_long</if_group>
+    <if_matched_sid>112401</if_matched_sid>
+    <same_field>win.eventdata.image</same_field>
+    <different_field>win.eventdata.queryName</different_field>
+    <description>UC24 Possible DNS tunnel on $(win.system.computer): $(win.eventdata.image) sent 20+ unique long DNS names in 60 seconds, e.g. $(win.eventdata.queryName)</description>
+    <mitre>
+      <id>T1071.004</id>
+      <id>T1048</id>
+    </mitre>
+    <group>pp_dns_tunnel,</group>
+  </rule>
+
+  <rule id="112403" level="10">
+    <if_sid>61650</if_sid>
+    <field name="win.eventdata.queryName" type="pcre2">(?i)(^|\.)(ngrok(-free)?\.(io|app|dev)|trycloudflare\.com|duckdns\.org|no-ip\.(org|com|biz)|ddns\.net|serveo\.net|loca\.lt|localtunnel\.me|pagekite\.me|oast\.(fun|pro|live|site|online|me)|interact\.sh|burpcollaborator\.net|dnslog\.cn|requestbin\.net|pipedream\.net|webhook\.site)\.?$</field>
+    <description>UC24 Lookup of a tunnelling or out-of-band service on $(win.system.computer): $(win.eventdata.queryName) by $(win.eventdata.image)</description>
+    <mitre>
+      <id>T1572</id>
+      <id>T1071.004</id>
+    </mitre>
+    <group>pp_dns_tunnel,</group>
+  </rule>
+
+</group>

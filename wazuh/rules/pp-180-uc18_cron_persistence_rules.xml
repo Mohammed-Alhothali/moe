@@ -1,0 +1,65 @@
+<!--
+  UC18 - Persistence on the web server through cron
+  Source : FIM (syscheck, realtime + report_changes) on /etc/crontab, /etc/cron.d, /etc/cron.hourly,
+           /etc/cron.daily, /etc/cron.weekly, /etc/cron.monthly and /var/spool/cron/crontabs
+  ATT&CK : T1053.003 Scheduled Task/Job: Cron
+
+  Logic
+    111801  a cron file was modified or deleted
+    111802  a new cron file was created
+    111803  the crontab of a web service account (www-data, portal, nginx, nobody) changed -
+            these accounts should never have personal crontabs
+    111804  the change ADDS a job that downloads code or opens a shell (curl, wget, nc, /dev/tcp,
+            bash -i, python -c, base64 -d, "| sh", files run from /tmp or /dev/shm)
+
+  False-positive control
+    * 111804 reads only ADDED lines ("> ...") that are not comments; package updates that only
+      touch comments or remove jobs stay at 111801.
+    * Keep the account names in 111803 in step with etc/lists/pp-service-accounts.
+-->
+
+<group name="linux,pilgrim_web,uc18,">
+
+  <rule id="111801" level="8">
+    <if_sid>550, 553</if_sid>
+    <field name="file" type="pcre2">^/etc/crontab$|^/etc/cron\.(d|hourly|daily|weekly|monthly)/.+|^/var/spool/cron/crontabs/.+</field>
+    <description>UC18 Scheduled job file changed on the web server: $(file)</description>
+    <mitre>
+      <id>T1053.003</id>
+    </mitre>
+    <group>pp_cron,pp_cron_change,</group>
+  </rule>
+
+  <rule id="111802" level="10">
+    <if_sid>554</if_sid>
+    <field name="file" type="pcre2">^/etc/cron\.(d|hourly|daily|weekly|monthly)/.+|^/var/spool/cron/crontabs/.+</field>
+    <description>UC18 New scheduled job file on the web server: $(file)</description>
+    <mitre>
+      <id>T1053.003</id>
+    </mitre>
+    <group>pp_cron,pp_cron_change,</group>
+  </rule>
+
+  <rule id="111803" level="12">
+    <if_sid>550, 553, 554</if_sid>
+    <field name="file" type="pcre2">^/var/spool/cron/crontabs/(www-data|portal|nginx|nobody)$</field>
+    <description>UC18 Crontab of a web service account changed: $(file)</description>
+    <mitre>
+      <id>T1053.003</id>
+    </mitre>
+    <group>pp_cron,pp_cron_change,</group>
+  </rule>
+
+  <rule id="111804" level="13">
+    <if_group>pp_cron_change</if_group>
+    <field name="changed_content" type="pcre2">(?m)^>\s*[^#\s].*(\b(curl|wget|nc|ncat|socat|telnet)\b|/dev/(tcp|udp)/|\bbash\s+-i\b|\bpython[23]?\s+-c\b|\bperl\s+-e\b|\bbase64\s+(-d|--decode)\b|\|\s*(ba|da|z)?sh\b|\s/(tmp|var/tmp|dev/shm)/)</field>
+    <description>UC18 Cron job added that downloads code or opens a shell: $(file)</description>
+    <mitre>
+      <id>T1053.003</id>
+      <id>T1105</id>
+      <id>T1059.004</id>
+    </mitre>
+    <group>pp_cron,</group>
+  </rule>
+
+</group>

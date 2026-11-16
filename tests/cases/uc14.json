@@ -1,0 +1,114 @@
+{
+ "use_case": "UC14",
+ "cases": [
+  {
+   "id": "UC14-01",
+   "title": "Task 4698 runs an EXE from AppData -> 111401",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 4698
+     },
+     "eventdata": {
+      "SubjectUserName": "ahmed",
+      "SubjectDomainName": "WIN10-LAB",
+      "TaskName": "\\Updater",
+      "TaskContent": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Task><Triggers><LogonTrigger><Enabled>true</Enabled></LogonTrigger></Triggers><Actions Context=\"Author\"><Exec><Command>C:\\Users\\ahmed\\AppData\\Roaming\\upd.exe</Command></Exec></Actions></Task>"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111401
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC14-02",
+   "title": "schtasks /create with a hidden PowerShell action -> 111402",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\schtasks.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "schtasks.exe",
+      "CommandLine": "schtasks.exe /create /sc onlogon /tn Updater /tr \"powershell -w hidden -f C:\\Users\\Public\\u.ps1\"",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111402
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC14-03",
+   "title": "Updater task in Program Files (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 4698
+     },
+     "eventdata": {
+      "SubjectUserName": "SYSTEM",
+      "SubjectDomainName": "NT AUTHORITY",
+      "TaskName": "\\GoogleUpdateTaskMachineUA",
+      "TaskContent": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Task><Triggers><LogonTrigger><Enabled>true</Enabled></LogonTrigger></Triggers><Actions Context=\"Author\"><Exec><Command>C:\\Program Files\\Google\\Update\\GoogleUpdate.exe</Command></Exec></Actions></Task>"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    111401
+   ]
+  }
+ ]
+}

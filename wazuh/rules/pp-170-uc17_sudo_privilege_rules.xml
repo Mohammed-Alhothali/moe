@@ -1,0 +1,93 @@
+<!--
+  UC17 - Privilege escalation on the web server through sudo
+  Source : FIM (syscheck, realtime + report_changes) on /etc/sudoers and /etc/sudoers.d
+           /var/log/auth.log (sudo messages)
+  ATT&CK : T1548.003 Abuse Elevation Control Mechanism: Sudo and Sudo Caching
+
+  Logic
+    111701  /etc/sudoers or a drop-in under /etc/sudoers.d was modified or deleted
+    111702  a new drop-in file appeared under /etc/sudoers.d
+    111703  the change ADDS a rule with NOPASSWD / !authenticate or full ALL=(ALL) rights
+            (reads the line diff that report_changes attaches to the FIM event)
+    111704  a web service account (etc/lists/pp-service-accounts) tried to run sudo
+    111705  ... within 30 minutes of a script being planted in the web root (UC07 110701)
+    111706  ... within 30 minutes of the web account running unexpected programs (UC07 110702)
+            Both mean someone is trying to turn web-shell access into root.
+
+  False-positive control
+    * 111703 only reads ADDED lines ("> ...") that are not comments, so removing rights or adding
+      a comment stays at 111701.
+    * Service accounts are a CDB list. Administrators using sudo keep Wazuh's normal levels.
+  Engine notes
+    * Wazuh will not reuse an event that already triggered a correlation of the same or higher level.
+      UC07's 110703 is level 15, so these chains key on 110701 (the planted file) and 110702 (later
+      commands) instead of on 110703 itself.
+    * The sudo decoder puts the caller in srcuser and the target (USER=) in dstuser. A list lookup on
+    field="user" checks srcuser first, so 111704 matches the account that RAN sudo.
+-->
+
+<group name="linux,pilgrim_web,uc17,">
+
+  <rule id="111701" level="10">
+    <if_sid>550, 553</if_sid>
+    <field name="file" type="pcre2">^/etc/sudoers(\.d/.+)?$</field>
+    <description>UC17 sudo configuration changed on the web server: $(file)</description>
+    <mitre>
+      <id>T1548.003</id>
+    </mitre>
+    <group>pp_privesc,pp_sudoers_change,</group>
+  </rule>
+
+  <rule id="111702" level="12">
+    <if_sid>554</if_sid>
+    <field name="file" type="pcre2">^/etc/sudoers\.d/.+</field>
+    <description>UC17 New sudoers drop-in file on the web server: $(file)</description>
+    <mitre>
+      <id>T1548.003</id>
+    </mitre>
+    <group>pp_privesc,</group>
+  </rule>
+
+  <rule id="111703" level="13">
+    <if_group>pp_sudoers_change</if_group>
+    <field name="changed_content" type="pcre2">(?m)^>\s*[^#\s].*(\bNOPASSWD\b|!authenticate|=\s*\(\s*ALL\s*(:\s*ALL\s*)?\)\s*ALL\s*$)</field>
+    <description>UC17 sudoers change grants passwordless or full root rights: $(file)</description>
+    <mitre>
+      <id>T1548.003</id>
+    </mitre>
+    <group>pp_privesc,</group>
+  </rule>
+
+  <rule id="111704" level="12">
+    <if_sid>5400</if_sid>
+    <list field="user" lookup="match_key">etc/lists/pp-service-accounts</list>
+    <description>UC17 Web service account $(srcuser) tried to run sudo as $(dstuser): $(command)</description>
+    <mitre>
+      <id>T1548.003</id>
+    </mitre>
+    <group>pp_privesc,</group>
+  </rule>
+
+  <rule id="111705" level="15" timeframe="1800">
+    <if_sid>111704</if_sid>
+    <if_matched_sid>110701</if_matched_sid>
+    <description>UC17 Web shell to root attempt: $(srcuser) ran sudo within 30 minutes of a script being planted in the web root</description>
+    <mitre>
+      <id>T1548.003</id>
+      <id>T1505.003</id>
+    </mitre>
+    <group>pp_privesc,</group>
+  </rule>
+
+  <rule id="111706" level="14" timeframe="1800">
+    <if_sid>111704</if_sid>
+    <if_matched_group>pp_webshell</if_matched_group>
+    <description>UC17 Web account escalation attempt: $(srcuser) ran sudo within 30 minutes of running unexpected programs on the web server (UC07)</description>
+    <mitre>
+      <id>T1548.003</id>
+      <id>T1505.003</id>
+    </mitre>
+    <group>pp_privesc,</group>
+  </rule>
+
+</group>

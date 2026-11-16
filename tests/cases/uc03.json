@@ -1,0 +1,153 @@
+{
+ "use_case": "UC03",
+ "cases": [
+  {
+   "id": "UC03-01",
+   "title": "Stuffing from an IP, then a success from that IP -> 110301",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.40\",\"username\":\"user0@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.40\",\"username\":\"user1@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.40\",\"username\":\"user2@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.40\",\"username\":\"user3@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.40\",\"username\":\"user4@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_success\",\"srcip\":\"203.0.113.40\",\"username\":\"pilgrim0007\",\"role\":\"pilgrim\",\"country\":\"NG\",\"session\":\"s-0007\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 5,
+     "rule": 110202
+    },
+    {
+     "at": 6,
+     "rule": 110301
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC03-02",
+   "title": "Password guessing on an account, attacker switches IP, then success -> 110302",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.41\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.41\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.41\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.41\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.41\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.41\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_success\",\"srcip\":\"198.18.0.7\",\"username\":\"agency.in01\",\"role\":\"agency\",\"country\":\"IN\",\"session\":\"s-in01\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 6,
+     "rule": 110203
+    },
+    {
+     "at": 7,
+     "rule": 110302
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC03-03",
+   "title": "Unrelated user logs in from another IP after an attack (no takeover alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.42\",\"username\":\"user0@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.42\",\"username\":\"user1@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.42\",\"username\":\"user2@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.42\",\"username\":\"user3@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.42\",\"username\":\"user4@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_success\",\"srcip\":\"192.0.2.77\",\"username\":\"pilgrim0100\",\"role\":\"pilgrim\",\"country\":\"EG\",\"session\":\"s-0100\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 5,
+     "rule": 110202
+    }
+   ],
+   "forbid": [
+    110301,
+    110302
+   ]
+  }
+ ]
+}

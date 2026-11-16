@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="panel narrow">
+  <h2>{{ rec.full_name }}</h2>
+  <dl>
+    <dt>Reference</dt><dd>{{ rec.pilgrim_ref }}</dd>
+    <dt>Nationality</dt><dd>{{ rec.nationality }}</dd>
+    <dt>Passport</dt><dd>{% if session.role in ('staff', 'admin') %}{{ rec.passport_no }}{% else %}{{ rec.passport_no|mask }}{% endif %}</dd>
+    <dt>Phone</dt><dd>{{ rec.phone }}</dd>
+    <dt>Agency</dt><dd>{{ rec.agency_code }}</dd>
+    <dt>Permit</dt><dd><span class="tag {{ rec.permit_status }}">{{ rec.permit_status }}</span></dd>
+  </dl>
+  <p><a href="{{ url_for('records') }}">← Back to records</a></p>
+</section>
+{% endblock %}

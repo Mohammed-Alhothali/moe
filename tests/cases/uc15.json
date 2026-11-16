@@ -1,0 +1,162 @@
+{
+ "use_case": "UC15",
+ "cases": [
+  {
+   "id": "UC15-01",
+   "title": "Non-approved operator adds a member to Administrators -> 111501",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 4732
+     },
+     "eventdata": {
+      "SubjectUserName": "ahmed",
+      "SubjectDomainName": "WIN10-LAB",
+      "MemberName": "-",
+      "MemberSid": "S-1-5-21-1111111111-2222222222-3333333333-1009",
+      "TargetUserName": "Administrators",
+      "TargetDomainName": "Builtin",
+      "TargetSid": "S-1-5-32-544"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111501
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC15-02",
+   "title": "Approved identity admin adds a member (stays at Wazuh default 60154)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 4732
+     },
+     "eventdata": {
+      "SubjectUserName": "it.admin",
+      "SubjectDomainName": "WIN10-LAB",
+      "MemberName": "-",
+      "MemberSid": "S-1-5-21-1111111111-2222222222-3333333333-1009",
+      "TargetUserName": "Administrators",
+      "TargetDomainName": "Builtin",
+      "TargetSid": "S-1-5-32-544"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 60154
+    }
+   ],
+   "forbid": [
+    111501,
+    111503
+   ]
+  },
+  {
+   "id": "UC15-03",
+   "title": "Member added to Remote Desktop Users -> 111502",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 4732
+     },
+     "eventdata": {
+      "SubjectUserName": "ahmed",
+      "SubjectDomainName": "WIN10-LAB",
+      "MemberName": "-",
+      "MemberSid": "S-1-5-21-1111111111-2222222222-3333333333-1009",
+      "TargetUserName": "Remote Desktop Users",
+      "TargetDomainName": "Builtin",
+      "TargetSid": "S-1-5-32-555"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111502
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC15-04",
+   "title": "Account created then made admin by the same operator -> 111503",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 4720
+     },
+     "eventdata": {
+      "SubjectUserName": "ahmed",
+      "SubjectDomainName": "WIN10-LAB",
+      "TargetUserName": "svc.backup2",
+      "TargetDomainName": "WIN10-LAB",
+      "TargetSid": "S-1-5-21-1111111111-2222222222-3333333333-1009"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 4732
+     },
+     "eventdata": {
+      "SubjectUserName": "ahmed",
+      "SubjectDomainName": "WIN10-LAB",
+      "MemberName": "-",
+      "MemberSid": "S-1-5-21-1111111111-2222222222-3333333333-1009",
+      "TargetUserName": "Administrators",
+      "TargetDomainName": "Builtin",
+      "TargetSid": "S-1-5-32-544"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 2,
+     "rule": 111503
+    }
+   ],
+   "forbid": []
+  }
+ ]
+}

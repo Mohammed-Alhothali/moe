@@ -1,0 +1,201 @@
+{
+ "use_case": "UC07",
+ "cases": [
+  {
+   "id": "UC07-01",
+   "title": "Script file appears in the portal web root -> 110701",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/opt/pilgrim-portal/public/assets/uc07-test.php",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "www-data",
+       "group_name": "www-data",
+       "uid": "33",
+       "gid": "33",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110701
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC07-02",
+   "title": "Web service account (www-data) executes a program -> 110702",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/audit/audit.log",
+     "log": "type=SYSCALL msg=audit(1762800000.123:5501): arch=c000003e syscall=59 success=yes exit=0 a0=55d0c1a2b3c0 a1=55d0c1a2b400 a2=55d0c1a2b440 a3=0 items=2 ppid=4110 pid=4123 auid=4294967295 uid=33 gid=33 euid=33 suid=33 fsuid=33 egid=33 sgid=33 fsgid=33 tty=(none) ses=4294967295 comm=\"id\" exe=\"/usr/bin/id\" subj=unconfined key=\"pp_web_exec\" type=EXECVE msg=audit(1762800000.123:5501): argc=1 a0=\"id\" type=CWD msg=audit(1762800000.123:5501): cwd=\"/opt/pilgrim-portal/public\" type=PATH msg=audit(1762800000.123:5501): item=0 name=\"/usr/bin/id\" inode=1234 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110702
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC07-03",
+   "title": "Script dropped, then the web tier runs a command -> 110703 (level 15)",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/opt/pilgrim-portal/public/assets/uc07-test.php",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "www-data",
+       "group_name": "www-data",
+       "uid": "33",
+       "gid": "33",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/audit/audit.log",
+     "log": "type=SYSCALL msg=audit(1762800000.123:5502): arch=c000003e syscall=59 success=yes exit=0 a0=55d0c1a2b3c0 a1=55d0c1a2b400 a2=55d0c1a2b440 a3=0 items=2 ppid=4110 pid=4123 auid=4294967295 uid=33 gid=33 euid=33 suid=33 fsuid=33 egid=33 sgid=33 fsgid=33 tty=(none) ses=4294967295 comm=\"whoami\" exe=\"/usr/bin/whoami\" subj=unconfined key=\"pp_web_exec\" type=EXECVE msg=audit(1762800000.123:5502): argc=1 a0=\"whoami\" type=CWD msg=audit(1762800000.123:5502): cwd=\"/opt/pilgrim-portal/public\" type=PATH msg=audit(1762800000.123:5502): item=0 name=\"/usr/bin/whoami\" inode=1234 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110701
+    },
+    {
+     "at": 2,
+     "rule": 110703
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC07-04",
+   "title": "Static asset (CSS) change in the web root (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/opt/pilgrim-portal/public/css/site.css",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "www-data",
+       "group_name": "www-data",
+       "uid": "33",
+       "gid": "33",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "www-data",
+       "group_name": "www-data",
+       "uid": "33",
+       "gid": "33",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110701
+   ]
+  },
+  {
+   "id": "UC07-05",
+   "title": "Upload allowlist blocks a .php disguised as a passport scan -> 110704",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"doc_upload\",\"srcip\":\"203.0.113.70\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"filename\":\"passport.php\",\"ext\":\"php\",\"result\":\"rejected\",\"reason\":\"type_not_allowed\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110704
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC07-06",
+   "title": "Wrong document type (.docx) rejected - user error, not an attack (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"doc_upload\",\"srcip\":\"203.0.113.71\",\"username\":\"pilgrim0043\",\"role\":\"pilgrim\",\"filename\":\"passport.docx\",\"ext\":\"docx\",\"result\":\"rejected\",\"reason\":\"type_not_allowed\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110704
+   ]
+  }
+ ]
+}

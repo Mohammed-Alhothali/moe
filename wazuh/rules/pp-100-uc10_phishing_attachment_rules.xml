@@ -1,0 +1,64 @@
+<!--
+  UC10 - Phishing attachment executes (HTA, script, or Office spawning a shell)
+  Source : Sysmon event 1 (process creation) on the staff workstation (Windows 10 agent)
+  ATT&CK : T1566.001 Spearphishing Attachment, T1204.002 Malicious File, T1218.005 Mshta
+
+  Context
+    Seasonal and back-office staff receive "visa update", "Nusuk invoice" and "permit confirmation"
+    emails all season. Office now blocks internet macros by default, so attackers ship HTA files,
+    scripts and shortcuts instead.
+
+  Logic
+    111001  mshta.exe opens an HTA from Downloads, Temp, the browser cache or the Outlook cache, or a URL
+    111002  wscript/cscript runs a .js/.jse/.vbs/.vbe/.wsf from those same user-download locations
+    111003  an Office application (Word, Excel, PowerPoint, Outlook, OneNote) starts a shell,
+            script host or LOLBin
+
+  False-positive control
+    * Scope is user-download locations only: IT logon scripts run from \\server\netlogon or Program Files.
+    * Office starting a shell is rare enough in this organisation to always be reviewed.
+  Engine note (applies to every process-creation rule in this library)
+    Wazuh loads level-0 rules as level 99, so its level-0 classifiers under Sysmon event 1 (92025 reg.exe,
+    92028 PowerShell running a script file, 92042 netsh, 92069 started by WMI) are tried before any sibling
+    and absorb the event. Process rules therefore attach to 61603 AND to those four classifiers.
+-->
+
+<group name="windows,sysmon,pilgrim_endpoint,uc10,">
+
+  <rule id="111001" level="12">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\mshta\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)\\+(Downloads|AppData\\+Local\\+Temp|INetCache|Content\.Outlook)\\+|https?://</field>
+    <description>UC10 Phishing attachment: mshta.exe opened an HTA from a mail/download location on $(win.system.computer): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1566.001</id>
+      <id>T1218.005</id>
+    </mitre>
+    <group>pp_phishing,pp_execution,</group>
+  </rule>
+
+  <rule id="111002" level="12">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\[cw]script\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)\\+(Downloads|AppData\\+Local\\+Temp|INetCache|Content\.Outlook)\\+[^"]+\.(js|jse|vbs|vbe|wsf|hta)\b</field>
+    <description>UC10 Phishing attachment: script host ran a downloaded script on $(win.system.computer): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1566.001</id>
+      <id>T1204.002</id>
+    </mitre>
+    <group>pp_phishing,pp_execution,</group>
+  </rule>
+
+  <rule id="111003" level="13">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.parentImage" type="pcre2">(?i)\\(winword|excel|powerpnt|outlook|onenote|msaccess|mspub)\.exe$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(cmd|powershell|pwsh|wscript|cscript|mshta|rundll32|regsvr32|certutil|bitsadmin)\.exe$</field>
+    <description>UC10 Office application started $(win.eventdata.image) on $(win.system.computer) (parent $(win.eventdata.parentImage)) - malicious document likely.</description>
+    <mitre>
+      <id>T1566.001</id>
+      <id>T1204.002</id>
+    </mitre>
+    <group>pp_phishing,pp_execution,</group>
+  </rule>
+
+</group>

@@ -1,0 +1,94 @@
+<!--
+  UC25 - Ransomware behaviour against the pilgrim document share
+  Source : FIM (syscheck, realtime) on C:\PilgrimShare, Sysmon event 1 (process creation)
+  ATT&CK : T1486 Data Encrypted for Impact, T1485 Data Destruction, T1490 Inhibit System Recovery
+
+  Logic
+    112501  a file in C:\PilgrimShare was added, changed or deleted - silent classification
+    112502  20 or more changes in the share within 60 seconds on the same host
+    112503  a ransom-note style file appeared in the share (README / DECRYPT / RESTORE / RECOVER...)
+    112504  ... the mass change is renaming documents to a second extension (passport.pdf.locked)
+    112505  a command that destroys recovery options: vssadmin delete shadows / resize shadowstorage,
+            wmic shadowcopy delete, wbadmin delete, bcdedit recoveryenabled no, PowerShell
+            Win32_ShadowCopy deletion
+    112506  mass change on the share on a host that destroyed recovery options in the last 30 min
+
+  Why it matters here
+    Passport scans and visa documents for the season live on this share. If they are encrypted in
+    the weeks before departure, pilgrims miss their visa windows - the agency cannot just "restore
+    next week".
+  False-positive control
+    * Single-file edits are silent; only bursts alert.
+    * 112504 needs a document extension FOLLOWED by another one, so normal saves never match.
+    * The share should only change through the booking workflow; the threshold (20 in 60 s) is
+      far above that workflow and can be tuned per site.
+  Engine note
+    112506 joins a Sysmon event and a FIM event. Wazuh correlates per agent by default, so both
+    halves must come from the same host without needing a shared field.
+-->
+
+<group name="windows,pilgrim_endpoint,uc25,">
+
+  <rule id="112501" level="2">
+    <if_sid>550, 553, 554</if_sid>
+    <field name="file" type="pcre2">(?i)^c:\\+pilgrimshare\\+</field>
+    <description>UC25 Change on the pilgrim document share (classification): $(file)</description>
+    <mitre>
+      <id>T1486</id>
+    </mitre>
+    <group>pp_share_change,</group>
+  </rule>
+
+  <rule id="112503" level="12">
+    <if_sid>554</if_sid>
+    <field name="file" type="pcre2">(?i)^c:\\+pilgrimshare\\+(.*\\+)?[^\\]*(readme|decrypt|restore|recover|how[_ -]?to|ransom|unlock)[^\\]*\.(txt|html?|hta|url)$</field>
+    <description>UC25 Ransom-note style file created on the pilgrim document share: $(file)</description>
+    <mitre>
+      <id>T1486</id>
+    </mitre>
+    <group>pp_ransom_note,</group>
+  </rule>
+
+  <rule id="112502" level="13" frequency="20" timeframe="60" ignore="300">
+    <if_group>pp_share_change</if_group>
+    <if_matched_sid>112501</if_matched_sid>
+    <description>UC25 Mass file changes on the pilgrim document share: 20+ in 60 seconds, last $(file)</description>
+    <mitre>
+      <id>T1486</id>
+      <id>T1485</id>
+    </mitre>
+    <group>pp_share_burst,pp_ransom_stage,</group>
+  </rule>
+
+  <rule id="112504" level="14">
+    <if_group>pp_share_burst</if_group>
+    <field name="file" type="pcre2">(?i)\.(pdf|jpe?g|png|tiff?|docx?|xlsx?|csv|txt)\.[a-z0-9]{2,12}$</field>
+    <description>UC25 Documents on the pilgrim share are being renamed with an extra extension (encryption pattern): $(file)</description>
+    <mitre>
+      <id>T1486</id>
+    </mitre>
+    <group>pp_share_encrypt,pp_ransom_stage,</group>
+  </rule>
+
+  <rule id="112505" level="14">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)\bvssadmin(\.exe)?(?:\\?")?\s+(delete\s+shadows|resize\s+shadowstorage)\b|\bwmic(\.exe)?(?:\\?")?\s+.*\bshadowcopy\b.*\bdelete\b|\bwbadmin(\.exe)?(?:\\?")?\s+delete\s+(catalog|systemstatebackup|backup)\b|\bbcdedit(\.exe)?(?:\\?")?\s+.*\b(recoveryenabled\s+no|bootstatuspolicy\s+ignoreallfailures)\b|Win32_ShadowCopy\b.*\b(Delete\(\)|Remove-(WmiObject|CimInstance))|\b(Get-WmiObject|gwmi|Get-CimInstance)\b.*Win32_ShadowCopy\b.*\|\s*(Remove-|%\s*\{\s*\$_\.Delete)</field>
+    <description>UC25 Recovery options being destroyed on $(win.system.computer): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1490</id>
+    </mitre>
+    <group>pp_recovery_inhibit,</group>
+  </rule>
+
+  <rule id="112506" level="15" timeframe="1800">
+    <if_group>pp_ransom_stage</if_group>
+    <if_matched_sid>112505</if_matched_sid>
+    <description>UC25 Ransomware attack in progress: mass changes on the pilgrim share after recovery options were destroyed on the same host</description>
+    <mitre>
+      <id>T1486</id>
+      <id>T1490</id>
+    </mitre>
+    <group>pp_ransomware,</group>
+  </rule>
+
+</group>

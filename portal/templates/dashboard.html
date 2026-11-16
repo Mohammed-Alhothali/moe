@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="panel">
+  <h2>Welcome, {{ session.name }}</h2>
+  <p class="muted">Role: <b>{{ session.role }}</b>{% if session.agency %} · Agency {{ session.agency }}{% endif %} · Signed in from {{ session.country }}</p>
+  <div class="grid">
+    {% if session.role in ('pilgrim', 'agency') %}
+      <a class="card link" href="{{ url_for('bookings') }}"><h3>Bookings</h3><p>Reserve an arrival group slot.</p></a>
+      <a class="card link" href="{{ url_for('documents') }}"><h3>Documents</h3><p>Upload passport and vaccination scans.</p></a>
+    {% endif %}
+    <a class="card link" href="{{ url_for('records') }}"><h3>Pilgrim records</h3><p>{% if session.role == 'pilgrim' %}Your record.{% else %}Records in your scope.{% endif %}</p></a>
+    {% if session.role in ('agency', 'staff', 'admin') %}<a class="card link" href="{{ url_for('export_page') }}"><h3>Export</h3><p>Download a CSV manifest.</p></a>{% endif %}
+    {% if session.role in ('staff', 'admin') %}<a class="card link" href="{{ url_for('pricing') }}"><h3>Price overrides</h3><p>Adjust a package price for a booking.</p></a>{% endif %}
+  </div>
+</section>
+{% endblock %}

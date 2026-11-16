@@ -1,0 +1,429 @@
+{
+ "use_case": "UC17",
+ "cases": [
+  {
+   "id": "UC17-01",
+   "title": "/etc/sudoers edited (comment only) -> 111701",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/etc/sudoers",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "content_changes": "12a13\n> # reviewed by IT 2026-11-11\n"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111701
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC17-02",
+   "title": "New drop-in file in /etc/sudoers.d -> 111702",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/etc/sudoers.d/pp-uc17-test",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111702
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC17-03",
+   "title": "Drop-in edited to add a NOPASSWD rule -> 111703",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/etc/sudoers.d/pp-uc17-test",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "content_changes": "1a2\n> nobody ALL=(ALL) NOPASSWD: /usr/bin/true\n"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111703
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC17-04",
+   "title": "Full ALL=(ALL:ALL) ALL granted in /etc/sudoers -> 111703",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/etc/sudoers",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "content_changes": "30a31\n> portal ALL=(ALL:ALL) ALL\n"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111703
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC17-05",
+   "title": "NOPASSWD only inside a comment stays at 111701 (FP control)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/etc/sudoers",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "content_changes": "30a31\n> # portal ALL=(ALL) NOPASSWD: ALL\n"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111701
+    }
+   ],
+   "forbid": [
+    111703
+   ]
+  },
+  {
+   "id": "UC17-06",
+   "title": "Web service account runs sudo (classic syslog time) -> 111704",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/auth.log",
+     "log": "Nov 11 10:00:00 web01 sudo: www-data : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/true"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111704
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC17-07",
+   "title": "Web service account runs sudo (Ubuntu 24.04 ISO time) -> 111704",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/auth.log",
+     "log": "2026-11-11T10:00:00.123456+03:00 web01 sudo: portal : user NOT in sudoers ; TTY=pts/1 ; PWD=/opt/pilgrim-portal ; USER=root ; COMMAND=/bin/bash"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111704
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC17-08",
+   "title": "Script planted in the web root, run, then sudo by www-data -> 111705",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/opt/pilgrim-portal/public/cmd.php",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "www-data",
+       "group_name": "www-data",
+       "uid": "33",
+       "gid": "33",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/audit/audit.log",
+     "log": "type=SYSCALL msg=audit(1762800000.123:7001): arch=c000003e syscall=59 success=yes exit=0 a0=55d0c1a2b3c0 a1=55d0c1a2b400 a2=55d0c1a2b440 a3=0 items=2 ppid=4110 pid=4123 auid=4294967295 uid=33 gid=33 euid=33 suid=33 fsuid=33 egid=33 sgid=33 fsgid=33 tty=(none) ses=4294967295 comm=\"id\" exe=\"/usr/bin/id\" subj=unconfined key=\"pp_web_exec\" type=EXECVE msg=audit(1762800000.123:7001): argc=1 a0=\"id\" type=CWD msg=audit(1762800000.123:7001): cwd=\"/opt/pilgrim-portal/public\" type=PATH msg=audit(1762800000.123:7001): item=0 name=\"/usr/bin/id\" inode=1234 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/auth.log",
+     "log": "Nov 11 10:00:00 web01 sudo: www-data : user NOT in sudoers ; TTY=unknown ; PWD=/opt/pilgrim-portal/public ; USER=root ; COMMAND=/usr/bin/id"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110701
+    },
+    {
+     "at": 2,
+     "rule": 110703
+    },
+    {
+     "at": 3,
+     "rule": 111705
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC17-10",
+   "title": "Web account runs an unexpected program, then sudo -> 111706",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/audit/audit.log",
+     "log": "type=SYSCALL msg=audit(1762800000.123:7101): arch=c000003e syscall=59 success=yes exit=0 a0=55d0c1a2b3c0 a1=55d0c1a2b400 a2=55d0c1a2b440 a3=0 items=2 ppid=4110 pid=4123 auid=4294967295 uid=33 gid=33 euid=33 suid=33 fsuid=33 egid=33 sgid=33 fsgid=33 tty=(none) ses=4294967295 comm=\"whoami\" exe=\"/usr/bin/whoami\" subj=unconfined key=\"pp_web_exec\" type=EXECVE msg=audit(1762800000.123:7101): argc=1 a0=\"whoami\" type=CWD msg=audit(1762800000.123:7101): cwd=\"/opt/pilgrim-portal/public\" type=PATH msg=audit(1762800000.123:7101): item=0 name=\"/usr/bin/whoami\" inode=1234 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/auth.log",
+     "log": "Nov 11 10:00:00 web01 sudo: www-data : user NOT in sudoers ; TTY=unknown ; PWD=/opt/pilgrim-portal/public ; USER=root ; COMMAND=/bin/sh"
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110702
+    },
+    {
+     "at": 2,
+     "rule": 111706
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC17-09",
+   "title": "Administrator uses sudo normally (no UC17 alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/auth.log",
+     "log": "Nov 11 10:00:00 web01 sudo: ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/apt update"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    111704,
+    111705,
+    111706
+   ]
+  }
+ ]
+}

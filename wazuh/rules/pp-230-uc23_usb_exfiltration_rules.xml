@@ -1,0 +1,77 @@
+<!--
+  UC23 - Pilgrim documents copied to a USB drive
+  Source : Security 6416 (new external device recognised - "Audit PNP Activity"),
+           Sysmon event 11 (file created) on drives other than C:
+  ATT&CK : T1052.001 Exfiltration over Physical Medium: Exfiltration over USB
+
+  Logic
+    112301  a USB storage device (DiskDrive class) was connected
+    112302  a file was written to a drive other than C: - silent classification
+    112303  10 or more files written to an external drive by the same process within 2 minutes
+    112304  ... and the files are pilgrim identity documents (passport, visa, national ID, manifest,
+            spreadsheet exports)
+    112305  ... and the drive was plugged in during the last 30 minutes (112301 on the same host)
+
+  Why it matters here
+    Passport scans and visa batches are what makes a pilgrim agency worth robbing; a USB stick is
+    the simplest way out of the building and needs no network access.
+  False-positive control
+    * One-off copies stay silent: only bulk copies alert, and severity rises with what is copied
+      and how fresh the drive is.
+    * ignore=300 keeps a single large copy from producing a stream of alerts.
+-->
+
+<group name="windows,sysmon,pilgrim_endpoint,uc23,">
+
+  <rule id="112301" level="8">
+    <if_sid>60227</if_sid>
+    <field name="win.eventdata.className" type="pcre2">(?i)^DiskDrive$</field>
+    <description>UC23 USB storage device connected to $(win.system.computer): $(win.eventdata.deviceDescription)</description>
+    <mitre>
+      <id>T1052.001</id>
+    </mitre>
+    <group>pp_usb,</group>
+  </rule>
+
+  <rule id="112302" level="2">
+    <if_sid>61613, 92216</if_sid>
+    <field name="win.eventdata.targetFilename" type="pcre2">(?i)^[d-z]:\\</field>
+    <description>UC23 File written to an external drive (classification): $(win.eventdata.targetFilename)</description>
+    <mitre>
+      <id>T1052.001</id>
+    </mitre>
+    <group>pp_usb_write,</group>
+  </rule>
+
+  <rule id="112303" level="12" frequency="10" timeframe="120" ignore="300">
+    <if_group>pp_usb_write</if_group>
+    <if_matched_sid>112302</if_matched_sid>
+    <same_field>win.eventdata.image</same_field>
+    <description>UC23 Bulk copy to an external drive on $(win.system.computer): 10+ files in 2 minutes by $(win.eventdata.image), last $(win.eventdata.targetFilename)</description>
+    <mitre>
+      <id>T1052.001</id>
+    </mitre>
+    <group>pp_usb_bulk,</group>
+  </rule>
+
+  <rule id="112304" level="13">
+    <if_group>pp_usb_bulk</if_group>
+    <field name="win.eventdata.targetFilename" type="pcre2">(?i)passport|visa|iqama|national[_ -]?id|manifest|pilgrim|\.(csv|xlsx?)$</field>
+    <description>UC23 Pilgrim identity documents bulk-copied to an external drive on $(win.system.computer): $(win.eventdata.targetFilename)</description>
+    <mitre>
+      <id>T1052.001</id>
+    </mitre>
+    <group>pp_usb_identity_docs,</group>
+  </rule>
+
+  <rule id="112305" level="14" timeframe="1800">
+    <if_group>pp_usb_identity_docs</if_group>
+    <if_matched_sid>112301</if_matched_sid>
+    <description>UC23 Pilgrim identity documents copied to a USB drive plugged in during the last 30 minutes on $(win.system.computer)</description>
+    <mitre>
+      <id>T1052.001</id>
+    </mitre>
+    <group>pp_usb_fresh_drive,</group>
+  </rule>
+
+</group>

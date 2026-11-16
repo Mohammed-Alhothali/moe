@@ -1,0 +1,290 @@
+{
+ "use_case": "UC02",
+ "cases": [
+  {
+   "id": "UC02-01",
+   "title": "Wrong passwords for 8 different accounts from one IP -> 110201",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.30\",\"username\":\"pilgrim0001\",\"role\":\"anonymous\",\"country\":\"PK\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.30\",\"username\":\"pilgrim0002\",\"role\":\"anonymous\",\"country\":\"PK\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.30\",\"username\":\"pilgrim0003\",\"role\":\"anonymous\",\"country\":\"PK\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.30\",\"username\":\"pilgrim0004\",\"role\":\"anonymous\",\"country\":\"PK\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.30\",\"username\":\"pilgrim0005\",\"role\":\"anonymous\",\"country\":\"PK\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.30\",\"username\":\"pilgrim0006\",\"role\":\"anonymous\",\"country\":\"PK\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.30\",\"username\":\"pilgrim0007\",\"role\":\"anonymous\",\"country\":\"PK\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.30\",\"username\":\"pilgrim0008\",\"role\":\"anonymous\",\"country\":\"PK\",\"reason\":\"bad_password\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 8,
+     "rule": 110201
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC02-02",
+   "title": "5 non-existent accounts from one IP -> 110202 (high confidence)",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.31\",\"username\":\"user0@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.31\",\"username\":\"user1@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.31\",\"username\":\"user2@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.31\",\"username\":\"user3@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.31\",\"username\":\"user4@mail.example\",\"role\":\"anonymous\",\"country\":\"NG\",\"reason\":\"unknown_user\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 5,
+     "rule": 110202
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC02-03",
+   "title": "6 wrong passwords for one agency account -> 110203",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.32\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.32\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.32\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.32\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.32\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.32\",\"username\":\"agency.in01\",\"role\":\"anonymous\",\"country\":\"IN\",\"reason\":\"bad_password\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 6,
+     "rule": 110203
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC02-04",
+   "title": "Hotel NAT: 7 pilgrims mistype passwords from one IP (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.33\",\"username\":\"pilgrim0020\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.33\",\"username\":\"pilgrim0021\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.33\",\"username\":\"pilgrim0022\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.33\",\"username\":\"pilgrim0023\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.33\",\"username\":\"pilgrim0024\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.33\",\"username\":\"pilgrim0025\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"bad_password\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"203.0.113.33\",\"username\":\"pilgrim0026\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"bad_password\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110201,
+    110202,
+    110203
+   ]
+  },
+  {
+   "id": "UC02-05",
+   "title": "Internal scanner on the trusted list is ignored",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"198.51.100.10\",\"username\":\"probe0\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"198.51.100.10\",\"username\":\"probe1\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"198.51.100.10\",\"username\":\"probe2\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"198.51.100.10\",\"username\":\"probe3\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"198.51.100.10\",\"username\":\"probe4\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"198.51.100.10\",\"username\":\"probe5\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"198.51.100.10\",\"username\":\"probe6\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"198.51.100.10\",\"username\":\"probe7\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"unknown_user\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_failed\",\"srcip\":\"198.51.100.10\",\"username\":\"probe8\",\"role\":\"anonymous\",\"country\":\"SA\",\"reason\":\"unknown_user\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110201,
+    110202
+   ]
+  },
+  {
+   "id": "UC02-06",
+   "title": "Tuning: nginx 401 for a failed sign-in is absorbed (no duplicate 31101 alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "192.168.56.130 - - [10/Nov/2026:20:15:03 +0300] \"POST /login HTTP/1.1\" 401 2210 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 110021
+    }
+   ],
+   "forbid": [
+    31101
+   ]
+  },
+  {
+   "id": "UC02-07",
+   "title": "Tuning keeps other 4xx: a scanner probing /wp-admin still raises 31101",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/nginx/access.log",
+     "log": "203.0.113.80 - - [10/Nov/2026:20:15:03 +0300] \"GET /wp-admin/install.php HTTP/1.1\" 404 1532 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\""
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 31101
+    }
+   ],
+   "forbid": [
+    110021,
+    110022
+   ]
+  }
+ ]
+}

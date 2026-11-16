@@ -1,0 +1,73 @@
+<!--
+  UC07 - Web shell / web-tier compromise on the portal server (web01)
+  Sources : FIM (syscheck, realtime) on /opt/pilgrim-portal/public   - built-in syscheck decoder
+            auditd execve by the web service accounts (key pp_web_exec) - built-in auditd decoder
+            pilgrim portal audit log (event=doc_upload)                - custom pilgrim-portal decoder
+  ATT&CK  : T1505.003 Web Shell, T1059.004 Unix Shell
+
+  Logic
+    110701  a server-side script (php, jsp, aspx, cgi, pl, py, sh ...) is created or modified inside the
+            portal's public web root. The portal is a Python app: nothing in that folder should ever
+            be executable code, so any such file is an artifact of compromise.
+    110702  a web service account (nginx www-data or the portal service user) executes a program.
+            Neither process ever spawns commands in normal operation.
+    110703  correlation: script dropped in the web root, then the web tier executes commands within
+            15 minutes on the same server -> web shell confirmed (level 15).
+    110704  early warning: the portal's upload allowlist blocked a server-side script or executable
+            (e.g. shell.php disguised as a passport scan) - someone is trying to plant one.
+
+  False-positive control
+    * FIM is scoped to the web root only, and only to script extensions.
+    * Binaries the web tier legitimately runs (none today) can be allowlisted in
+      etc/lists/pp-web-allowed-binaries without touching the rule.
+    * Deployments go through the CI user, never www-data, so a release does not trip 110702.
+    * A rejected upload of an ordinary wrong type (.docx, .txt) is user error and does not fire 110704.
+-->
+
+<group name="pilgrim_portal,uc07,">
+
+  <rule id="110701" level="12">
+    <if_sid>550, 554</if_sid>
+    <field name="file" type="pcre2">(?i)^/opt/pilgrim-portal/public/.+\.(?:php\d?|phtml|phar|pht|jspx?|aspx?|ashx|cgi|pl|py|sh)$</field>
+    <description>UC07 Web shell suspected: server-side script $(file) appeared in the portal web root.</description>
+    <mitre>
+      <id>T1505.003</id>
+    </mitre>
+    <group>pp_webshell,</group>
+  </rule>
+
+  <rule id="110702" level="10">
+    <if_sid>80700</if_sid>
+    <field name="audit.key">^pp_web_exec$</field>
+    <list field="audit.exe" lookup="not_match_key">etc/lists/pp-web-allowed-binaries</list>
+    <description>UC07 Web tier executed a command: $(audit.exe) run by uid $(audit.euid) (comm: $(audit.command)).</description>
+    <mitre>
+      <id>T1505.003</id>
+      <id>T1059.004</id>
+    </mitre>
+    <group>pp_webshell,</group>
+  </rule>
+
+  <rule id="110703" level="15" timeframe="900">
+    <if_sid>110702</if_sid>
+    <if_matched_sid>110701</if_matched_sid>
+    <description>UC07 Web shell confirmed: a script was dropped in the web root and the web tier then executed $(audit.exe).</description>
+    <mitre>
+      <id>T1505.003</id>
+      <id>T1059.004</id>
+    </mitre>
+    <group>pp_webshell,</group>
+  </rule>
+
+  <rule id="110704" level="9">
+    <if_sid>110019</if_sid>
+    <field name="result">^rejected$</field>
+    <field name="ext" type="pcre2">(?i)^(?:php\d?|phtml|phar|pht|jspx?|aspx?|ashx|cgi|pl|py|sh|exe|dll|war)$</field>
+    <description>UC07 Blocked upload of a server-side script or executable ($(filename)) by $(username) from $(srcip).</description>
+    <mitre>
+      <id>T1505.003</id>
+    </mitre>
+    <group>pp_webshell,pp_webshell_upload,</group>
+  </rule>
+
+</group>

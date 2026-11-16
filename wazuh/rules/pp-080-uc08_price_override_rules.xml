@@ -1,0 +1,66 @@
+<!--
+  UC08 - Package price override abuse (insider fraud)
+  Source : pilgrim portal audit log (event=price_override)
+  ATT&CK : T1565.001 Stored Data Manipulation
+
+  Context
+    Staff can override a Hajj/Umrah package price (VIP guests, compensation). That power is a
+    classic insider-fraud path: sell a 45,000 SAR package to a friend for 4,500.
+
+  Logic (siblings are evaluated highest level first)
+    110801  discount of 30% or more                                         level 10
+    110802  override by an account that is NOT a finance approver           level 12
+    110803    ...and the discount is 30% or more                            level 14
+    110804  4+ overrides by the same account within 10 minutes             level 12
+
+  Wazuh 4.x rules have no numeric comparison, so "30% or more" is the regex ^(?:[3-9]\d|100)$
+  on the integer discount_pct the application logs.
+
+  False-positive control
+    * Approvers are a CDB list (etc/lists/pp-price-approvers) owned by Finance - no rule edits
+      when people change roles.
+    * Small goodwill discounts under 30% by approvers stay at the base level-3 audit trail.
+-->
+
+<group name="pilgrim_portal,uc08,">
+
+  <rule id="110801" level="10">
+    <if_sid>110017</if_sid>
+    <field name="discount_pct" type="pcre2">^(?:[3-9]\d|100)$</field>
+    <description>UC08 Large discount: $(username) cut $(package_id) by $(discount_pct)% ($(list_price) to $(new_price) SAR), reason: $(reason_code).</description>
+    <mitre>
+      <id>T1565.001</id>
+    </mitre>
+    <group>pp_price_override,</group>
+  </rule>
+
+  <rule id="110802" level="12">
+    <if_sid>110017</if_sid>
+    <list field="username" lookup="not_match_key">etc/lists/pp-price-approvers</list>
+    <description>UC08 Unauthorized price override: $(username) is not a finance approver ($(package_id) set to $(new_price) SAR).</description>
+    <mitre>
+      <id>T1565.001</id>
+    </mitre>
+    <group>pp_price_override,</group>
+  </rule>
+
+  <rule id="110803" level="14">
+    <if_sid>110802</if_sid>
+    <field name="discount_pct" type="pcre2">^(?:[3-9]\d|100)$</field>
+    <description>UC08 Unauthorized large discount: $(username) (not an approver) cut $(package_id) by $(discount_pct)% to $(new_price) SAR.</description>
+    <mitre>
+      <id>T1565.001</id>
+    </mitre>
+    <group>pp_price_override,</group>
+  </rule>
+
+  <rule id="110804" level="12" frequency="4" timeframe="600" ignore="600">
+    <if_matched_group>pp_price_override</if_matched_group>
+    <same_field>username</same_field>
+    <description>UC08 Repeated price overrides: $(username) made 4+ overrides in 10 minutes.</description>
+    <mitre>
+      <id>T1565.001</id>
+    </mitre>
+  </rule>
+
+</group>

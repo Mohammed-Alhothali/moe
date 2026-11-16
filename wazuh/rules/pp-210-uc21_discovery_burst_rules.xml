@@ -1,0 +1,134 @@
+<!--
+  UC21 - Hands-on-keyboard discovery (a burst of reconnaissance commands)
+  Source : Sysmon event 1 (process creation)
+  ATT&CK : T1033 System Owner/User Discovery, T1082 System Information Discovery,
+           T1016 System Network Configuration Discovery, T1049 System Network Connections Discovery,
+           T1057 Process Discovery, T1087 Account Discovery, T1069 Permission Groups Discovery,
+           T1135 Network Share Discovery, T1482 Domain Trust Discovery
+
+  Logic
+    112101  classify discovery tools (whoami, hostname, ipconfig, systeminfo, tasklist, quser, qwinsta,
+            arp, route, netstat, nltest, cmdkey, getmac, nbtstat) - silent
+    112102  classify read-only net.exe / net1.exe verbs (user, group, localgroup, accounts, view, share,
+            session, config) - silent. Commands that ADD or DELETE (net user x /add) are left to Wazuh's
+            92039/92040 so they still alert.
+    112103  classify wmic queries and "netsh ... show" - silent
+    112104  domain-level discovery (nltest /dclist, /domain_trusts; net group "domain admins" /domain) - visible
+    112109  funnel: every classified command passes through this one rule so it is stored exactly once
+    112110  5 or more discovery commands, of different tools, by the same user within 2 minutes
+    112111  ... on a host that raised a phishing, PowerShell or LOLBin alert (UC10-UC12) in the last 30 min
+
+  Why the classifiers are level 4 with no_log
+    One discovery command on its own is normal admin work, so it should not alert. Level 4 is needed
+    because Wazuh's own net.exe / cmd rules are level 3 and would otherwise claim the event first;
+    no_log keeps the classification off the dashboard while it is still stored for correlation.
+  Why a funnel rule (112109)
+    A rule with several parents sits in several places of Wazuh's rule tree. When correlation is done
+    by group, Wazuh stores the event once per place, so a 5-event threshold could fire after 2 events.
+    The classifiers therefore all lead into 112109, and the burst counts 112109 by ID
+    (if_matched_sid), which stores each event exactly once.
+  False-positive control
+    * The burst needs different tools (different_field originalFileName): an admin re-running
+      ipconfig does not count as a burst.
+    * Management agents (CcmExec, Intune) launching inventory commands are excluded by parent process.
+    * So is the Wazuh agent itself: its SCA scan runs "net user" and "wmic useraccount ... get" as SYSTEM at
+      every agent start and every 12 hours. This false positive was found live in the lab and tuned here.
+    * net.exe starts net1.exe with the same arguments; the net1.exe child is not counted again, so one net
+      command counts once and repeating net.exe can never look like two different tools.
+    * ignore=300 stops one session from producing a stream of alerts.
+-->
+
+<group name="windows,sysmon,pilgrim_endpoint,uc21,">
+
+  <rule id="112101" level="4">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.originalFileName" type="pcre2">(?i)^(whoami|hostname|ipconfig|sysinfo|tasklist|quser|qwinsta|query|arp|route|netstat|nltestrk|cmdkey|getmac|nbtstat)\.exe$</field>
+    <field name="win.eventdata.parentImage" type="pcre2" negate="yes">(?i)\\(CcmExec|IntuneManagementExtension|AgentExecutor|net)\.exe$|\\ossec-agent\\+wazuh-agent\.exe$</field>
+    <options>no_log</options>
+    <description>UC21 Discovery command (classification): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1033</id>
+      <id>T1082</id>
+      <id>T1016</id>
+    </mitre>
+    <group>pp_discovery_tool,</group>
+  </rule>
+
+  <rule id="112102" level="4">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.originalFileName" type="pcre2">(?i)^net1?\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)^(?!.*\s/(add|delete|del)\b)(?!.*\suse\b).*\s(user|group|localgroup|accounts|view|share|session|config)\b</field>
+    <field name="win.eventdata.parentImage" type="pcre2" negate="yes">(?i)\\(CcmExec|IntuneManagementExtension|AgentExecutor|net)\.exe$|\\ossec-agent\\+wazuh-agent\.exe$</field>
+    <options>no_log</options>
+    <description>UC21 Discovery command (classification): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1087</id>
+      <id>T1069</id>
+      <id>T1135</id>
+    </mitre>
+    <group>pp_discovery_tool,</group>
+  </rule>
+
+  <rule id="112103" level="4">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)\bwmic(\.exe)?(?:\\?")?\s+(/node:\S+\s+)?(useraccount|group|computersystem|os|qfe|process|nicconfig|share|startup|product|service|logicaldisk)\b.*\b(get|list)\b|\bnetsh(\.exe)?(?:\\?")?\s+(wlan|interface|advfirewall|firewall)\b.*\bshow\b</field>
+    <field name="win.eventdata.parentImage" type="pcre2" negate="yes">(?i)\\(CcmExec|IntuneManagementExtension|AgentExecutor|net)\.exe$|\\ossec-agent\\+wazuh-agent\.exe$</field>
+    <options>no_log</options>
+    <description>UC21 Discovery command (classification): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1082</id>
+      <id>T1016</id>
+    </mitre>
+    <group>pp_discovery_tool,</group>
+  </rule>
+
+  <rule id="112104" level="8">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)\bnltest(\.exe)?(?:\\?")?\s+.*/(dclist|domain_trusts|dsgetdc|trusted_domains|parentdomain)\b|\bnet1?(\.exe)?(?:\\?")?\s+group\s+"?(domain admins|enterprise admins|schema admins|domain controllers)"?.*/do(main)?\b</field>
+    <description>UC21 Domain discovery on $(win.system.computer) by $(win.eventdata.user): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1482</id>
+      <id>T1069.002</id>
+    </mitre>
+    <group>pp_discovery_domain,</group>
+  </rule>
+
+  <rule id="112109" level="4">
+    <if_group>pp_discovery_tool</if_group>
+    <options>no_log</options>
+    <description>UC21 Discovery command counted for burst detection: $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1033</id>
+      <id>T1082</id>
+      <id>T1087</id>
+    </mitre>
+    <group>pp_discovery_hit,</group>
+  </rule>
+
+  <rule id="112110" level="10" frequency="5" timeframe="120" ignore="300">
+    <if_group>pp_discovery_hit</if_group>
+    <if_matched_sid>112109</if_matched_sid>
+    <same_field>win.eventdata.user</same_field>
+    <different_field>win.eventdata.originalFileName</different_field>
+    <description>UC21 Discovery burst on $(win.system.computer): $(win.eventdata.user) ran 5+ different reconnaissance tools within 2 minutes</description>
+    <mitre>
+      <id>T1033</id>
+      <id>T1082</id>
+      <id>T1087</id>
+    </mitre>
+    <group>pp_recon_burst,</group>
+  </rule>
+
+  <rule id="112111" level="13" timeframe="1800">
+    <if_group>pp_recon_burst</if_group>
+    <if_matched_group>pp_execution</if_matched_group>
+    <description>UC21 Discovery burst on $(win.system.computer) after a suspicious execution alert (UC10-UC12) on the same host in the last 30 minutes</description>
+    <mitre>
+      <id>T1033</id>
+      <id>T1082</id>
+      <id>T1087</id>
+    </mitre>
+    <group>pp_recon_after_exec,</group>
+  </rule>
+
+</group>

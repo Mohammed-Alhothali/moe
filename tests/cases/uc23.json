@@ -1,0 +1,819 @@
+{
+ "use_case": "UC23",
+ "cases": [
+  {
+   "id": "UC23-01",
+   "title": "USB stick connected -> 112301",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 6416
+     },
+     "eventdata": {
+      "SubjectUserSid": "S-1-5-18",
+      "SubjectUserName": "WIN10-LAB$",
+      "SubjectDomainName": "WORKGROUP",
+      "SubjectLogonId": "0x3e7",
+      "DeviceId": "USBSTOR\\Disk&Ven_SanDisk&Prod_Cruzer_Blade&Rev_1.00\\4C530001231122",
+      "DeviceDescription": "SanDisk Cruzer Blade USB Device",
+      "ClassId": "{4d36e967-e325-11ce-bfc1-08002be10318}",
+      "ClassName": "DiskDrive",
+      "HardwareIds": "USBSTOR\\DiskSanDisk_Cruzer_Blade",
+      "CompatibleIds": "USBSTOR\\Disk",
+      "LocationInformation": "-"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112301
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC23-02",
+   "title": "Ten holiday photos copied to E: -> 112303 (bulk, not identity documents)",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\Trip\\IMG_0001.jpg",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\Trip\\IMG_0002.jpg",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\Trip\\IMG_0003.jpg",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\Trip\\IMG_0004.jpg",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\Trip\\IMG_0005.jpg",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\Trip\\IMG_0006.jpg",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\Trip\\IMG_0007.jpg",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\Trip\\IMG_0008.jpg",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\Trip\\IMG_0009.jpg",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\Trip\\IMG_0010.jpg",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 10,
+     "rule": 112303
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC23-03",
+   "title": "Ten passport scans copied to E: -> 112304",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0001.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0002.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0003.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0004.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0005.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0006.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0007.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0008.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0009.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0010.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 10,
+     "rule": 112304
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC23-04",
+   "title": "USB plugged in, then passport scans copied -> 112305",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 6416
+     },
+     "eventdata": {
+      "SubjectUserSid": "S-1-5-18",
+      "SubjectUserName": "WIN10-LAB$",
+      "SubjectDomainName": "WORKGROUP",
+      "SubjectLogonId": "0x3e7",
+      "DeviceId": "USBSTOR\\Disk&Ven_SanDisk&Prod_Cruzer_Blade&Rev_1.00\\4C530001231122",
+      "DeviceDescription": "SanDisk Cruzer Blade USB Device",
+      "ClassId": "{4d36e967-e325-11ce-bfc1-08002be10318}",
+      "ClassName": "DiskDrive",
+      "HardwareIds": "USBSTOR\\DiskSanDisk_Cruzer_Blade",
+      "CompatibleIds": "USBSTOR\\Disk",
+      "LocationInformation": "-"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0001.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0002.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0003.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0004.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0005.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0006.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0007.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0008.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0009.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0010.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112301
+    },
+    {
+     "at": 11,
+     "rule": 112305
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC23-05",
+   "title": "Three files copied to USB (below threshold, silent)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0001.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0002.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 11
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:05:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555559}",
+      "ProcessId": "3920",
+      "Image": "C:\\Windows\\explorer.exe",
+      "TargetFilename": "E:\\PassportScans\\passport_0003.pdf",
+      "CreationUtcTime": "2026-11-11 10:05:00.000",
+      "User": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112303,
+    112304,
+    112305
+   ]
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="panel narrow">
+  <h2>Export pilgrim manifest</h2>
+  <p class="muted">{% if session.role == 'agency' %}Exports the pilgrims registered with your agency.{% else %}Exports all pilgrims of the season.{% endif %} The export contains passport numbers and phone numbers. Handle it under the data protection policy.</p>
+  <a class="btn" href="{{ url_for('export_csv') }}">Download CSV</a>
+</section>
+{% endblock %}

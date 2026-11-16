@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOE SOC console</title>
+  <link rel="icon" href="/static/moe-favicon.png">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <a class="skip" href="#view">Skip to content</a>
+  <header class="appbar">
+    <a class="brand" href="#/live" aria-label="MOE SOC console, live board">
+      <img src="/static/moe-logo.svg" alt="MOE" class="brand-logo logo-light" width="135" height="40">
+      <img src="/static/moe-logo-dark.svg" alt="" class="brand-logo logo-dark" width="135" height="40">
+      <span class="brand-sub">Monitor · Observe · Escalate<span class="brand-org" id="org"></span></span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#/live" data-route="live">Live <span class="nav-badge" id="live-badge" hidden></span></a>
+      <a href="#/overview" data-route="overview">Overview</a>
+      <a href="#/alerts" data-route="alerts">Alerts</a>
+      <a href="#/logs" data-route="logs">Logs</a>
+      <a href="#/agents" data-route="agents">Agents</a>
+      <a href="#/attack" data-route="attack">ATT&amp;CK</a>
+      <a href="#/usecases" data-route="usecases">Use cases</a>
+    </nav>
+    <button type="button" class="theme-btn" id="theme" aria-pressed="false">Dark</button>
+    <button type="button" class="health" id="health" data-state="unknown" aria-label="System health">
+      <span class="health-dot" aria-hidden="true"></span><span class="health-text">Checking</span>
+    </button>
+  </header>
+
+  <main id="view" class="view" tabindex="-1"></main>
+
+  <div class="drawer-backdrop" id="backdrop" hidden></div>
+  <aside class="drawer" id="drawer" aria-labelledby="drawer-title" hidden>
+    <button type="button" class="drawer-close btn" id="drawer-close">Close</button>
+    <div id="drawer-body"></div>
+  </aside>
+  <div class="tip" id="tip" role="tooltip" hidden></div>
+  <p class="sr-only" aria-live="polite" id="announcer"></p>
+  <script type="module" src="/static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,2055 @@
+{
+ "use_case": "UC25",
+ "cases": [
+  {
+   "id": "UC25-01",
+   "title": "20 files deleted from the share in a minute -> 112502",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0001.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0002.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0003.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0004.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0005.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0006.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0007.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0008.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0009.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0010.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0011.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0012.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0013.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0014.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0015.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0016.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0017.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0018.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0019.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0020.pdf",
+      "mode": "realtime",
+      "type": "deleted",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 20,
+     "rule": 112502
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC25-02",
+   "title": "Ransom note written to the share -> 112503",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\README_RESTORE_FILES.txt",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112503
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC25-03",
+   "title": "Documents renamed to .pdf.locked -> 112504",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0001.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0002.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0003.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0004.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0005.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0006.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0007.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0008.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0009.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0010.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0011.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0012.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0013.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0014.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0015.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0016.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0017.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0018.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0019.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0020.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 20,
+     "rule": 112504
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC25-04",
+   "title": "vssadmin delete shadows -> 112505",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\vssadmin.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "VSSADMIN.EXE",
+      "CommandLine": "vssadmin.exe delete shadows /all /quiet",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112505
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC25-11",
+   "title": "Found live: vssadmin typed in PowerShell (quoted program path) -> 112505",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\vssadmin.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "VSSADMIN.EXE",
+      "CommandLine": "\"C:\\Windows\\System32\\vssadmin.exe\" delete shadows /for=Q: /quiet",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "ParentCommandLine": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112505
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC25-05",
+   "title": "wmic shadowcopy delete -> 112505",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\wbem\\WMIC.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "wmic.exe",
+      "CommandLine": "wmic shadowcopy where ID='{00000000-0000-0000-0000-000000000000}' delete",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112505
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC25-06",
+   "title": "bcdedit disables recovery -> 112505",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\bcdedit.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "bcdedit.exe",
+      "CommandLine": "bcdedit /set {default} recoveryenabled No",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112505
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC25-07",
+   "title": "Shadow copies deleted, then mass encryption of the share -> 112506",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\vssadmin.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "VSSADMIN.EXE",
+      "CommandLine": "vssadmin.exe delete shadows /all /quiet",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0001.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0002.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0003.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0004.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0005.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0006.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0007.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0008.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0009.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0010.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0011.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0012.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0013.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0014.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0015.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0016.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0017.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0018.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0019.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0020.pdf.locked",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 112505
+    },
+    {
+     "at": 21,
+     "rule": 112506
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC25-08",
+   "title": "Listing shadow copies (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Sysmon",
+      "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "level": 4,
+      "computer": "WIN10-LAB",
+      "eventID": 1
+     },
+     "eventdata": {
+      "RuleName": "-",
+      "UtcTime": "2026-11-11 10:00:00.000",
+      "ProcessGuid": "{11111111-2222-3333-4444-555555555555}",
+      "ProcessId": "4242",
+      "Image": "C:\\Windows\\System32\\vssadmin.exe",
+      "FileVersion": "10.0.19041.1",
+      "Description": "-",
+      "Product": "Microsoft Windows Operating System",
+      "Company": "Microsoft Corporation",
+      "OriginalFileName": "VSSADMIN.EXE",
+      "CommandLine": "vssadmin list shadows",
+      "CurrentDirectory": "C:\\Users\\ahmed\\",
+      "User": "WIN10-LAB\\ahmed",
+      "LogonGuid": "{11111111-2222-3333-4444-000000000001}",
+      "LogonId": "0x3e7a1",
+      "TerminalSessionId": "1",
+      "IntegrityLevel": "Medium",
+      "Hashes": "SHA256=0000000000000000000000000000000000000000000000000000000000000000",
+      "ParentProcessGuid": "{11111111-2222-3333-4444-555555555554}",
+      "ParentProcessId": "4100",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "ParentCommandLine": "C:\\Windows\\explorer.exe",
+      "ParentUser": "WIN10-LAB\\ahmed"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112505
+   ]
+  },
+  {
+   "id": "UC25-09",
+   "title": "Five documents edited by staff (below threshold, silent)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0001.pdf",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0002.pdf",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0003.pdf",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0004.pdf",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    },
+    {
+     "type": "fim",
+     "data": {
+      "path": "c:\\pilgrimshare\\passportscans\\passport_0005.pdf",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "Administrators",
+       "group_name": "Administrators",
+       "uid": "S-1-5-32-544",
+       "gid": "S-1-5-32-544",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    112502,
+    112504,
+    112506
+   ]
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+<!--
+  UC14 - Persistence through a scheduled task
+  Sources : Security event 4698 "scheduled task created" (needs "Other Object Access Events" auditing,
+            enabled by windows/setup-windows.ps1) and Sysmon event 1 for schtasks.exe
+  ATT&CK  : T1053.005 Scheduled Task
+
+  Logic
+    111401  a task is created whose action runs from a user-writable folder or through a script host
+    111402  schtasks.exe /create with the same kind of /tr action (covers machines without 4698 auditing)
+
+  False-positive control
+    * Legitimate updaters (browsers, drivers) run from Program Files and do not match.
+    * Admin scripts should live in a protected folder (e.g. C:\Scripts owned by Administrators), which
+      keeps them outside these patterns.
+  Engine note (applies to every process-creation rule in this library)
+    Wazuh loads level-0 rules as level 99, so its level-0 classifiers under Sysmon event 1 (92025 reg.exe,
+    92028 PowerShell running a script file, 92042 netsh, 92069 started by WMI) are tried before any sibling
+    and absorb the event. Process rules therefore attach to 61603 AND to those four classifiers.
+-->
+
+<group name="windows,pilgrim_endpoint,uc14,">
+
+  <rule id="111401" level="12">
+    <if_sid>60228</if_sid>
+    <field name="win.eventdata.taskContent" type="pcre2">(?i)\\+(AppData|Temp|Users\\+Public|Downloads|ProgramData)\\+|\b(powershell|pwsh|mshta|wscript|cscript|rundll32|regsvr32)(\.exe)?\b|\bcmd(\.exe)?\s+/c</field>
+    <description>UC14 Suspicious scheduled task $(win.eventdata.taskName) created by $(win.eventdata.subjectUserName) on $(win.system.computer).</description>
+    <mitre>
+      <id>T1053.005</id>
+    </mitre>
+    <group>pp_persistence,</group>
+  </rule>
+
+  <rule id="111402" level="12">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\schtasks\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)/create\b.*/tr\s+.*(\\+(AppData|Temp|Users\\+Public|Downloads|ProgramData)\\+|\b(powershell|pwsh|mshta|wscript|cscript|rundll32|regsvr32)(\.exe)?\b|\bcmd(\.exe)?\s+/c)</field>
+    <description>UC14 schtasks created a task with a suspicious action on $(win.system.computer): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1053.005</id>
+    </mitre>
+    <group>pp_persistence,</group>
+  </rule>
+
+</group>

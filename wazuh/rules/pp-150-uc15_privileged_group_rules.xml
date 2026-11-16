@@ -1,0 +1,56 @@
+<!--
+  UC15 - Privileged group changes (Administrators, Remote Desktop Users)
+  Source : Security events 4720 (account created) and 4732 (member added to a local group)
+  ATT&CK : T1098 Account Manipulation, T1136.001 Create Local Account
+
+  Wazuh's own rule 60154 already raises "Administrators Group Changed" (level 12) for any add or
+  removal. This use case adds the context the default cannot know:
+
+    111501  a member is ADDED to Administrators by an account that is not an approved identity
+            administrator (etc/lists/pp-identity-admins)
+    111502  a member is ADDED to Remote Desktop Users (refines Wazuh's 60179, which also fires on removals)
+    111503  the same operator created a new account and made it an administrator within 15 minutes
+            (account-creation-to-admin chain, typical of an attacker securing a backdoor)
+
+  False-positive control
+    * Approved identity administrators are a CDB list, so their routine changes stay at Wazuh's default level.
+    * 111503 needs both halves of the chain from the same operator.
+-->
+
+<group name="windows,pilgrim_endpoint,uc15,">
+
+  <rule id="111501" level="13">
+    <if_sid>60154</if_sid>
+    <field name="win.system.eventID">^4732$</field>
+    <list field="win.eventdata.subjectUserName" lookup="not_match_key">etc/lists/pp-identity-admins</list>
+    <description>UC15 Unapproved administrator grant on $(win.system.computer): $(win.eventdata.subjectUserName) added $(win.eventdata.memberSid) to Administrators.</description>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
+    <group>pp_privilege,</group>
+  </rule>
+
+  <rule id="111502" level="11">
+    <if_sid>60179</if_sid>
+    <field name="win.system.eventID">^4732$</field>
+    <description>UC15 Remote access granted on $(win.system.computer): $(win.eventdata.subjectUserName) added $(win.eventdata.memberSid) to Remote Desktop Users.</description>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
+    <group>pp_privilege,</group>
+  </rule>
+
+  <rule id="111503" level="14" timeframe="900">
+    <if_sid>60154</if_sid>
+    <field name="win.system.eventID">^4732$</field>
+    <if_matched_sid>60109</if_matched_sid>
+    <same_field>win.eventdata.subjectUserName</same_field>
+    <description>UC15 Backdoor account chain on $(win.system.computer): $(win.eventdata.subjectUserName) created an account and made $(win.eventdata.memberSid) an administrator within 15 minutes.</description>
+    <mitre>
+      <id>T1136.001</id>
+      <id>T1098</id>
+    </mitre>
+    <group>pp_privilege,</group>
+  </rule>
+
+</group>

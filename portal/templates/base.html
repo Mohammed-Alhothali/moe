@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ ORG }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="mark">◆</span>
+    <div><strong>{{ ORG }}</strong><small dir="rtl" lang="ar">بوابة خدمات ضيوف الرحمن</small></div>
+  </div>
+  <nav>
+    <a href="{{ url_for('permits') }}">Permit status</a>
+    {% if session.username %}
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      {% if session.role in ('pilgrim', 'agency') %}<a href="{{ url_for('bookings') }}">Bookings</a><a href="{{ url_for('documents') }}">Documents</a>{% endif %}
+      <a href="{{ url_for('records') }}">Records</a>
+      {% if session.role in ('agency', 'staff', 'admin') %}<a href="{{ url_for('export_page') }}">Export</a>{% endif %}
+      {% if session.role in ('staff', 'admin') %}<a href="{{ url_for('pricing') }}">Pricing</a>{% endif %}
+      <a class="who" href="{{ url_for('logout') }}">{{ session.username }} · Sign out</a>
+    {% else %}
+      <a class="who" href="{{ url_for('login') }}">Sign in</a>
+    {% endif %}
+  </nav>
+</header>
+<main>
+  {% with msgs = get_flashed_messages(with_categories=true) %}
+    {% for cat, msg in msgs %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}
+  {% endwith %}
+  {% block body %}{% endblock %}
+</main>
+<footer>Fictional organisation for a security lab · every action on this portal is audited</footer>
+</body>
+</html>

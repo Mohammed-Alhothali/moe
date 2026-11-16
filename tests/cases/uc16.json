@@ -1,0 +1,110 @@
+{
+ "use_case": "UC16",
+ "cases": [
+  {
+   "id": "UC16-01",
+   "title": "Expired seasonal account logs on -> 111601",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 4624
+     },
+     "eventdata": {
+      "SubjectUserSid": "S-1-5-18",
+      "SubjectUserName": "WIN10-LAB$",
+      "TargetUserName": "s1447.ops017",
+      "TargetDomainName": "WIN10-LAB",
+      "LogonType": "2",
+      "IpAddress": "192.168.56.1",
+      "WorkstationName": "WIN10-LAB",
+      "LogonProcessName": "User32",
+      "AuthenticationPackageName": "Negotiate"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111601
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC16-02",
+   "title": "Failed logon with an expired seasonal account -> 111602",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8010000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 4625
+     },
+     "eventdata": {
+      "SubjectUserSid": "S-1-0-0",
+      "TargetUserName": "s1447.guide042",
+      "TargetDomainName": "WIN10-LAB",
+      "Status": "0xc000006d",
+      "SubStatus": "0xc000006a",
+      "LogonType": "3",
+      "IpAddress": "192.168.56.130",
+      "WorkstationName": "ATTACKER",
+      "FailureReason": "%%2313"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111602
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC16-03",
+   "title": "Normal staff logon (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "win",
+     "system": {
+      "providerName": "Microsoft-Windows-Security-Auditing",
+      "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+      "channel": "Security",
+      "keywords": "0x8020000000000000",
+      "computer": "WIN10-LAB",
+      "eventID": 4624
+     },
+     "eventdata": {
+      "SubjectUserSid": "S-1-5-18",
+      "SubjectUserName": "WIN10-LAB$",
+      "TargetUserName": "ahmed",
+      "TargetDomainName": "WIN10-LAB",
+      "LogonType": "2",
+      "IpAddress": "192.168.56.1",
+      "WorkstationName": "WIN10-LAB",
+      "LogonProcessName": "User32",
+      "AuthenticationPackageName": "Negotiate"
+     }
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    111601
+   ]
+  }
+ ]
+}

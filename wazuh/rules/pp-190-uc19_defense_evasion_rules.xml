@@ -1,0 +1,139 @@
+<!--
+  UC19 - Defence evasion: Microsoft Defender weakened, event logs wiped
+  Source : Microsoft-Windows-Windows Defender/Operational (5001, 5007, 5010, 5012, 5013),
+           Security 1102, System 104, Sysmon event 1 (process creation)
+  ATT&CK : T1562.001 Impair Defenses: Disable or Modify Tools, T1070.001 Clear Windows Event Logs
+
+  Logic
+    111901  Defender real-time / antivirus / antispyware protection turned off (5001, 5010, 5012)
+    111902  a Defender exclusion was added (5007 with an Exclusions value)
+    111903  ... and the exclusion is high risk: a whole drive, a user-writable folder, an
+            executable or script extension, or a script host process
+    111904  Tamper Protection blocked an attempt to WEAKEN Defender (5013 whose new value turns a
+            Disable* setting on, or adds an exclusion). Found live in the lab: switching protection back on
+            in Windows Security also logs 5013 ("DisableRealtimeMonitoring = 0 -> 0"); that no longer alerts.
+    111905  a command line that adds exclusions, sets Defender "Disable*" policy values or stops
+            the Defender services (PowerShell, reg.exe, sc.exe)
+    111906  Wazuh's own Set-MpPreference rules (92008-92015) re-raised in this use case so they
+            take part in the correlation below
+    111907  the Security log was cleared (1102)
+    111908  another Windows log was cleared (System 104)
+    111909  a command line that wipes logs (wevtutil cl, Clear-EventLog, Remove-EventLog, ClearLog())
+    111910  logs wiped within 30 minutes AFTER Defender was weakened on the same host
+
+  How it relates to Wazuh's own rules
+    Wazuh raises 5001 at level 5 and 5007 at level 5, and the Security-log clear at level 5 (63103).
+    It has no rule for exclusions, Tamper Protection, reg.exe/sc.exe tampering or wevtutil.
+    Our rules attach under Wazuh's Defender, Eventlog and Set-MpPreference rules, so whichever
+    path the event takes, the final alert carries UC19 context.
+  Field names
+    Wazuh keeps the spaces of Defender's data names and only lower-cases the first letter, so
+    "New Value" becomes win.eventdata.new Value (not newValue).
+  False-positive control
+    * Exclusions are split: 111902 for any exclusion, 111903 only for the risky kinds.
+    * Correlation (111910) needs both halves on the same agent; Wazuh correlates per agent by default.
+-->
+
+<group name="windows,pilgrim_endpoint,uc19,">
+
+  <rule id="111901" level="10">
+    <if_sid>62100, 62101, 62102, 62157, 62159</if_sid>
+    <field name="win.system.eventID">^5001$|^5010$|^5012$</field>
+    <description>UC19 Microsoft Defender protection turned off on $(win.system.computer) (event $(win.system.eventID))</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+    <group>pp_defense_tamper,</group>
+  </rule>
+
+  <rule id="111902" level="12">
+    <if_sid>62100, 62101, 62102</if_sid>
+    <field name="win.system.eventID">^5007$</field>
+    <field name="win.eventdata.new Value" type="pcre2">(?i)\\+Exclusions\\+(Paths|Extensions|Processes|IpAddresses)\\+</field>
+    <description>UC19 Microsoft Defender exclusion added on $(win.system.computer): $(win.eventdata.new Value)</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+    <group>pp_defense_tamper,pp_defender_exclusion,</group>
+  </rule>
+
+  <rule id="111903" level="13">
+    <if_group>pp_defender_exclusion</if_group>
+    <field name="win.eventdata.new Value" type="pcre2">(?i)\\+Exclusions\\+Paths\\+([a-z]:\\*\s*=|.*\\+(Users\\+Public|AppData|Temp|Downloads|ProgramData|PerfLogs)(\\+|\s*=))|\\+Exclusions\\+Extensions\\+\.?(exe|dll|ps1|bat|cmd|vbs|js|hta|scr|msi)\s*=|\\+Exclusions\\+Processes\\+.*\b(powershell|pwsh|cmd|rundll32|regsvr32|mshta|wscript|cscript)\.exe</field>
+    <description>UC19 High-risk Defender exclusion on $(win.system.computer) (drive, user-writable folder, script type or script host): $(win.eventdata.new Value)</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+    <group>pp_defense_tamper,</group>
+  </rule>
+
+  <rule id="111904" level="12">
+    <if_sid>62100, 62101, 62102</if_sid>
+    <field name="win.system.eventID">^5013$</field>
+    <field name="win.eventdata.value" type="pcre2">(?i)\\Disable\w+\s*=\s*\S*\s*-(&amp;gt;|>)\s*0*[1-9]|\\Exclusions\\</field>
+    <description>UC19 Tamper Protection blocked an attempt to weaken Microsoft Defender on $(win.system.computer): $(win.eventdata.value)</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+    <group>pp_defense_tamper,</group>
+  </rule>
+
+  <rule id="111905" level="12">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)\b(add|set)-mppreference\b.*-exclusion(path|extension|process|ipaddress)\b|\\Windows Defender\b[^/]*\s/v\s+"?(Disable(AntiSpyware|AntiVirus|RealtimeMonitoring|BehaviorMonitoring|OnAccessProtection|ScanOnRealtimeEnable|IOAVProtection)|TamperProtection)\b|\bsc(\.exe)?\s+(stop|config|delete)\s+"?(WinDefend|WdNisSvc|WdFilter|WdBoot|Sense)\b|\b(Stop-Service|Set-Service)\b.*\bWinDefend\b</field>
+    <description>UC19 Command to disable or bypass Microsoft Defender on $(win.system.computer): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+    <group>pp_defense_tamper,</group>
+  </rule>
+
+  <rule id="111906" level="13">
+    <if_sid>92008, 92009, 92010, 92011, 92012, 92013, 92014, 92015</if_sid>
+    <description>UC19 Defender protection switched off from PowerShell on $(win.system.computer): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+    <group>pp_defense_tamper,</group>
+  </rule>
+
+  <rule id="111907" level="12">
+    <if_sid>63103, 60117</if_sid>
+    <description>UC19 Security event log cleared on $(win.system.computer)</description>
+    <mitre>
+      <id>T1070.001</id>
+    </mitre>
+    <group>pp_log_clear,</group>
+  </rule>
+
+  <rule id="111908" level="10">
+    <if_sid>63104</if_sid>
+    <description>UC19 A Windows event log was cleared on $(win.system.computer) (System event 104)</description>
+    <mitre>
+      <id>T1070.001</id>
+    </mitre>
+    <group>pp_log_clear,</group>
+  </rule>
+
+  <rule id="111909" level="12">
+    <if_sid>61603, 92025, 92028, 92042, 92069</if_sid>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)\bwevtutil(\.exe)?(?:\\?")?\s+(cl|clear-log)\b|\b(Clear-EventLog|Remove-EventLog)\b|\.ClearLog\(|\bnteventlog\b.*\bcleareventlog\b</field>
+    <description>UC19 Command to wipe Windows event logs on $(win.system.computer): $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1070.001</id>
+    </mitre>
+    <group>pp_log_clear,</group>
+  </rule>
+
+  <rule id="111910" level="15" timeframe="1800">
+    <if_group>pp_log_clear</if_group>
+    <if_matched_group>pp_defense_tamper</if_matched_group>
+    <description>UC19 Defence-evasion chain on $(win.system.computer): Defender was weakened, then event logs were wiped within 30 minutes</description>
+    <mitre>
+      <id>T1562.001</id>
+      <id>T1070.001</id>
+    </mitre>
+    <group>pp_evasion_chain,</group>
+  </rule>
+
+</group>

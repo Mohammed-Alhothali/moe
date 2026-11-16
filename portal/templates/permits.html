@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="panel">
+  <h2>Permit status</h2>
+  <form method="get" class="inline">
+    <input name="q" value="{{ q }}" placeholder="Permit number (HJ1448-...) or holder name" maxlength="100">
+    <button class="btn">Search</button>
+  </form>
+  {% if q %}
+  <table>
+    <tr><th>Permit</th><th>Holder</th><th>Status</th><th>Agency</th></tr>
+    {% for r in rows %}<tr><td>{{ r.permit_no }}</td><td>{{ r.holder_name.split(' ')[0] }} {{ r.holder_name.split(' ')[-1][:1] }}.</td><td><span class="tag {{ r.status }}">{{ r.status }}</span></td><td>{{ r.campaign }}</td></tr>
+    {% else %}<tr><td colspan="4" class="muted">No permit found.</td></tr>{% endfor %}
+  </table>
+  {% endif %}
+</section>
+{% endblock %}

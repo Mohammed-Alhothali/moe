@@ -1,0 +1,35 @@
+<!--
+  UC04 - Impossible travel
+  Source : pilgrim portal audit log (login_success, with country resolved from the client IP)
+  ATT&CK : T1078 Valid Accounts
+
+  Logic
+    110401  the same account logs in successfully from two different countries within 60 minutes.
+            No flight gets a pilgrim from Jakarta to Makkah - or from Makkah to Amsterdam - in an hour.
+
+  What deliberately does NOT alert
+    A pilgrim logging in from India in the morning and from Jeddah six hours later: that is a flight.
+    Logins from abroad in general: pilgrims and licensed agencies log in from everywhere.
+
+  False-positive control
+    * Corporate / campaign VPN exit IPs go in etc/lists/pp-vpn-egress and are skipped.
+    * Neighbouring-country pairs (e.g. SA-BH over the causeway) cannot be expressed as a pair in a
+      Wazuh 4.x rule; the improvement path is to let the application compute travel speed
+      (km/h between the two logins) and alert above ~900 km/h.
+-->
+
+<group name="pilgrim_portal,uc04,">
+
+  <rule id="110401" level="12" frequency="2" timeframe="3600">
+    <if_matched_group>pp_login_success</if_matched_group>
+    <same_field>username</same_field>
+    <different_field>country</different_field>
+    <list field="srcip" lookup="not_address_match_key">etc/lists/pp-vpn-egress</list>
+    <description>UC04 Impossible travel: $(username) logged in from $(country) ($(srcip)) less than an hour after a login from another country.</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+    <group>pp_impossible_travel,</group>
+  </rule>
+
+</group>

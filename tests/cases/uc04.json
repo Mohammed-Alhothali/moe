@@ -1,0 +1,71 @@
+{
+ "use_case": "UC04",
+ "cases": [
+  {
+   "id": "UC04-01",
+   "title": "Same account: Saudi Arabia, then the Netherlands within the hour -> 110401",
+   "kind": "positive",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_success\",\"srcip\":\"192.168.20.15\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"country\":\"SA\",\"session\":\"s-0042\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_success\",\"srcip\":\"185.107.56.10\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"country\":\"NL\",\"session\":\"s-0042\"}"
+    }
+   ],
+   "expect": [
+    {
+     "at": 2,
+     "rule": 110401
+    }
+   ],
+   "forbid": []
+  },
+  {
+   "id": "UC04-02",
+   "title": "Two logins from the same country (no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_success\",\"srcip\":\"49.36.10.1\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"country\":\"IN\",\"session\":\"s-0042\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_success\",\"srcip\":\"49.36.99.2\",\"username\":\"pilgrim0042\",\"role\":\"pilgrim\",\"country\":\"IN\",\"session\":\"s-0042\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110401
+   ]
+  },
+  {
+   "id": "UC04-03",
+   "title": "Second login via the corporate VPN exit (allowlisted, no alert)",
+   "kind": "negative",
+   "events": [
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_success\",\"srcip\":\"192.168.20.30\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"country\":\"SA\",\"session\":\"s-ps01\"}"
+    },
+    {
+     "type": "raw",
+     "location": "/var/log/pilgrim-portal/portal.log",
+     "log": "Nov 10 20:15:03 web01 pilgrim-portal[812]: {\"event\":\"login_success\",\"srcip\":\"198.51.100.50\",\"username\":\"staff.ops01\",\"role\":\"staff\",\"country\":\"NL\",\"session\":\"s-ps01\"}"
+    }
+   ],
+   "expect": [],
+   "forbid": [
+    110401
+   ]
+  }
+ ]
+}

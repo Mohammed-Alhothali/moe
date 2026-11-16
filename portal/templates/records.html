@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="panel">
+  <h2>Pilgrim records</h2>
+  <table>
+    <tr><th>Ref</th><th>Name</th><th>Nationality</th><th>Agency</th><th>Permit</th></tr>
+    {% for r in rows %}
+    <tr><td><a href="{{ url_for('record', pid=r.id) }}">{{ r.pilgrim_ref }}</a></td><td>{{ r.full_name }}</td><td>{{ r.nationality }}</td><td>{{ r.agency_code }}</td><td><span class="tag {{ r.permit_status }}">{{ r.permit_status }}</span></td></tr>
+    {% else %}<tr><td colspan="5" class="muted">No records in your scope.</td></tr>{% endfor %}
+  </table>
+  {% if session.role != 'pilgrim' %}<p class="pager">{% if page > 1 %}<a href="?page={{ page - 1 }}">← Previous</a>{% endif %} Page {{ page }} {% if rows|length == 25 %}<a href="?page={{ page + 1 }}">Next →</a>{% endif %}</p>{% endif %}
+</section>
+{% endblock %}
